@@ -9,8 +9,7 @@
   <meta property="og:title" content="Eng. Amiim Quiz Challenge 🎉" />
   <meta property="og:description" content="Test your knowledge! Can you get 4/4 in the Eng. Amiim Quiz? 🧠 Tap to try and share your score!" />
   <meta property="og:image" content="https://raw.githubusercontent.com/TumwekwaseAmiim/eng-amiim-site/main/preview.png" />
-
-<meta property="og:url" content="https://tumwekwaseamiim.github.io/eng-amiim-site/" />
+  <meta property="og:url" content="https://tumwekwaseamiim.github.io/eng-amiim-site/" />
 
   <style>
     body {
@@ -67,7 +66,6 @@
       height: 200px;
       border-radius: 50%;
       background: url('https://raw.githubusercontent.com/TumwekwaseAmiim/eng-amiim-site/main/innov.JPG') center/cover no-repeat;
-
       margin: auto;
       box-shadow: 0 0 20px hsl(23, 83%, 57%), inset 0 0 10px #00ffcc;
       position: relative;
@@ -134,6 +132,16 @@
       cursor: pointer;
     }
 
+    .share-icons {
+      margin-top: 1rem;
+    }
+    .share-icons a {
+      margin: 0 10px;
+      font-size: 1.5rem;
+      color: #00ffee;
+      text-decoration: none;
+    }
+
     #result {
       margin-top: 2rem;
       font-size: 1.2rem;
@@ -187,97 +195,19 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="photo">
-      <div class="scanner"></div>
+  <!-- [unchanged code above this line] -->
+
+  <div id="congrats" style="display:none; margin-top:1rem; font-size:1.2rem; color:#00ffee;">
+    🎈 Congratulations! You got all answers right! 🎉<br>
+    Thanks for loving Eng. Amiim Creativity.<br><br>
+    <button onclick="shareScore()">Share on Social Media</button>
+    <div class="share-icons">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">Facebook</a>
+      <a href="https://wa.me/?text=Try%20the%20Eng.%20Amiim%20Quiz!%20https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">WhatsApp</a>
+      <a href="https://twitter.com/intent/tweet?text=Try%20the%20Eng.%20Amiim%20Quiz!&url=https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">Twitter</a>
     </div>
-    <div class="title">Eng. Amiim | Tech Innovator</div>
-  </header>
+  </div>
 
-  <section class="led-showcase">
-    <div class="pattern">Pulse Grid</div>
-    <div class="pattern">Amiim Beam</div>
-    <div class="pattern">Digital Roots</div>
-    <div class="pattern">Lightwave Circuit</div>
-  </section>
-
-  <section class="tech-roots">
-    <h2>Where Technology Takes Root_Kibale East_Kamwenge will one day shine in Technology</h2>
-    <svg width="120" height="120">
-      <circle cx="60" cy="60" r="45" stroke="#00ffcc" stroke-width="2" fill="none" />
-      <text x="60" y="65" text-anchor="middle" fill="#00ffcc" font-size="14" font-family="monospace" class="animated-text">
-        Eng. Amiim
-      </text>
-    </svg>
-  </section>
-
-  <section class="game-section">
-    <h2>🎮 Mini Quiz Game</h2>
-    <div class="game-container">
-      <p>Answer the following questions and test your knowledge!</p>
-      <form id="quizForm">
-        <label>1. Who is your best Member of Parliament?</label>
-        <input type="text" id="q1" required><br>
-        <label>2. Who is your best Woman MP?</label>
-        <input type="text" id="q2" required><br>
-        <label>3. Who is your best Chairperson LCV?</label>
-        <input type="text" id="q3" required><br>
-        <label>4. Where does Eng. Amiim Tumwekwase live?</label>
-        <input type="text" id="q4" required><br>
-        <button type="submit">Submit Answers</button>
-      </form>
-      <div id="result"></div>
-      <div id="congrats" style="display:none; margin-top:1rem; font-size:1.2rem; color:#00ffee;">
-        🎈 Congratulations! You got all answers right! 🎉<br>
-        Thanks for loving Eng. Amiim Creativity.<br><br>
-        <button onclick="shareScore()">Share on Social Media</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="ai-deco">
-    <div class="ai-background">
-      <svg width="100%" height="200" preserveAspectRatio="none" viewBox="0 0 1200 200">
-        <path d="M0,100 C300,200 900,0 1200,100" fill="none" stroke="#00ffcc" stroke-width="2" stroke-dasharray="10 5">
-          <animate attributeName="stroke-dashoffset" values="0;1000" dur="5s" repeatCount="indefinite" />
-        </path>
-      </svg>
-      <div class="ai-text">Eng. Amiim Tumwekwase</div>
-    </div>
-  </section>
-
-  <footer>
-    Built by Eng. Amiim | "Creativity in Motion"
-  </footer>
-
-  <script>
-    function shareScore() {
-      const a1 = document.getElementById("q1").value.trim();
-      const a2 = document.getElementById("q2").value.trim();
-      const a3 = document.getElementById("q3").value.trim();
-      const a4 = document.getElementById("q4").value.trim();
-      const text = `🎈 I passed the Eng. Amiim Quiz with full marks!\n\nHere were my answers:\n1. Hon. Frank Tumwebaze is my best MP: ${a1}\n2. Hon. Sylivia Bahireira is my best Woman MP: ${a2}\n3. Hon. Karungi Joseph Omugabuzi is my best LCV Chairperson: ${a3}\n4. Eng. Amiim lives in: ${a4}\n\nThanks for loving Eng. Amiim Creativity.`;
-      if (navigator.share) {
-        navigator.share({ title: "Eng. Amiim Quiz", text });
-      } else {
-        alert("Copy and share this message:\n" + text);
-      }
-    }
-
-    document.getElementById("quizForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      let score = 0;
-      const q1 = document.getElementById("q1").value.toLowerCase();
-      const q2 = document.getElementById("q2").value.toLowerCase();
-      const q3 = document.getElementById("q3").value.toLowerCase();
-      const q4 = document.getElementById("q4").value.toLowerCase();
-      if (q1.includes("frank") || q1.includes("tumwebaze") || q1.includes("minister")) score++;
-      if (q2.includes("sylivia") || q2.includes("bahireira")) score++;
-      if (q3.includes("karungi") || q3.includes("joseph") || q3.includes("omugabuzi")) score++;
-      if (q4.includes("katalyeba") || q4.includes("kamwenge") || q4.includes("kibale") || q4.includes("rwamwanja")) score++;
-      document.getElementById("result").innerText = `You scored ${score} out of 4!`;
-      document.getElementById("congrats").style.display = score === 4 ? 'block' : 'none';
-    });
-  </script>
+  <!-- [unchanged code below this line] -->
 </body>
 </html>
