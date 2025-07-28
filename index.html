@@ -18,41 +18,12 @@
       overflow-x: hidden;
       position: relative;
     }
-    body::before {
-      content: "Eng. Amiim Tumwekwase • ";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 200%;
-      font-size: 3rem;
-      font-weight: bold;
-      color: rgba(255, 255, 255, 0.05);
-      white-space: nowrap;
-      z-index: 0;
-      transform: rotate(-30deg);
-      animation: scrollPattern 40s linear infinite;
-      pointer-events: none;
-    }
-    @keyframes scrollPattern {
-      0% { transform: rotate(-30deg) translateX(0); }
-      100% { transform: rotate(-30deg) translateX(-50%); }
-    }
     header {
       text-align: center;
       padding: 4rem 2rem;
       background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       position: relative;
       z-index: 1;
-    }
-    header::after {
-      content: "Eng. Amiim Tumwekwase";
-      position: absolute;
-      bottom: 10px;
-      right: 20px;
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.1);
-      pointer-events: none;
     }
     .photo {
       width: 200px;
@@ -80,21 +51,25 @@
     .title {
       font-size: 2rem;
       margin-top: 1rem;
-      position: relative;
-      z-index: 1;
     }
-    section.led-showcase, .tech-roots, .game-section {
+    .section {
       padding: 3rem 2rem;
       background: rgba(0, 0, 0, 0.7);
       text-align: center;
-      position: relative;
-      z-index: 1;
     }
-    .pattern {
-      margin: 1rem 0;
-      padding: 1rem;
+    .led-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+      background: #111;
+    }
+    .led-item {
+      padding: 1rem 2rem;
       background: #222;
       border-left: 5px solid #00ffcc;
+      font-weight: bold;
     }
     .game-container {
       background: #1a1a1a;
@@ -116,41 +91,16 @@
       border: none;
       cursor: pointer;
     }
-    .share-icons { margin-top: 1rem; }
-    .share-icons a {
-      margin: 0 10px;
-      font-size: 1.5rem;
-      color: #00ffee;
-      text-decoration: none;
-    }
     #result {
       margin-top: 2rem;
       font-size: 1.2rem;
       color: #00ffcc;
     }
-    .ai-deco {
-      background: #0a0a0a;
-      position: relative;
-      padding: 2rem 0;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .ai-background { position: relative; width: 100%; height: 200px; }
-    .ai-background svg { position: absolute; top: 0; left: 0; }
-    .ai-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .share-icons a {
+      margin: 0 10px;
       font-size: 1.5rem;
       color: #00ffee;
-      font-family: 'Courier New', Courier, monospace;
-      animation: glowText 3s ease-in-out infinite;
-    }
-    @keyframes glowText {
-      0% { text-shadow: 0 0 5px #00ffee; opacity: 1; }
-      50% { text-shadow: 0 0 15px #00ffee; opacity: 0.7; }
-      100% { text-shadow: 0 0 5px #00ffee; opacity: 1; }
+      text-decoration: none;
     }
     footer {
       text-align: center;
@@ -166,7 +116,21 @@
     <source src="https://raw.githubusercontent.com/TumwekwaseAmiim/eng-amiim-site/main/back-for-good.mp3" type="audio/mp3">
   </audio>
 
-  <section class="game-section">
+  <header>
+    <div class="photo">
+      <div class="scanner"></div>
+    </div>
+    <h1 class="title">Eng. Amiim Tumwekwase</h1>
+  </header>
+
+  <section class="led-showcase">
+    <div class="led-item">Pulse Grid</div>
+    <div class="led-item">Amiim Beam</div>
+    <div class="led-item">Digital Roots</div>
+    <div class="led-item">Lightwave Circuit</div>
+  </section>
+
+  <section class="section">
     <h2>🎮 Mini Quiz Game</h2>
     <div class="game-container">
       <p>Answer the following questions and test your knowledge!</p>
@@ -175,7 +139,7 @@
         <input type="text" id="q1" required><br>
         <label>2. Who is your best Woman MP?</label>
         <input type="text" id="q2" required><br>
-        <label>3. Who is your best Chairperson LCV?</label>
+        <label>3. Who is your best Chairperson LCV (Kamwenge District)?</label>
         <input type="text" id="q3" required><br>
         <label>4. Where does Eng. Amiim Tumwekwase live?</label>
         <input type="text" id="q4" required><br>
@@ -185,23 +149,25 @@
       <div id="congrats" style="display:none; margin-top:1rem; font-size:1.2rem; color:#00ffee;">
         🎈 Congratulations! You got all answers right! 🎉<br>
         Thanks for loving Eng. Amiim Creativity.<br><br>
-        <button onclick="shareScore()">Share on Social Media</button>
+        <div class="share-icons">
+          <a href="#" id="shareWhatsapp" target="_blank">WhatsApp</a>
+          <a href="#" id="shareFacebook" target="_blank">Facebook</a>
+          <a href="#" id="shareTwitter" target="_blank">Twitter</a>
+        </div>
       </div>
     </div>
   </section>
 
+  <footer>
+    Built by Eng. Amiim | "Creativity in Motion"
+  </footer>
+
   <script>
-    function shareScore() {
-      const a1 = document.getElementById("q1").value.trim();
-      const a2 = document.getElementById("q2").value.trim();
-      const a3 = document.getElementById("q3").value.trim();
-      const a4 = document.getElementById("q4").value.trim();
-      const text = `🎈 I passed the Eng. Amiim Quiz with full marks!\n\nHere were my answers:\n1. MP: ${a1}\n2. Woman MP: ${a2}\n3. LCV: ${a3}\n4. Lives in: ${a4}\n\nThanks for loving Eng. Amiim Creativity.`;
-      if (navigator.share) {
-        navigator.share({ title: "Eng. Amiim Quiz", text });
-      } else {
-        alert("Copy and share this message:\n" + text);
-      }
+    function updateShareLinks(text) {
+      const encoded = encodeURIComponent(text);
+      document.getElementById("shareWhatsapp").href = `https://wa.me/?text=${encoded}`;
+      document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=https://tumwekwaseamiim.github.io/eng-amiim-site/&quote=${encoded}`;
+      document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?text=${encoded}`;
     }
 
     document.getElementById("quizForm").addEventListener("submit", function(event) {
@@ -216,7 +182,17 @@
       if (q3.includes("karungi") || q3.includes("joseph") || q3.includes("omugabuzi")) score++;
       if (q4.includes("katalyeba") || q4.includes("kamwenge") || q4.includes("kibale") || q4.includes("rwamwanja")) score++;
       document.getElementById("result").innerText = `You scored ${score} out of 4!`;
-      document.getElementById("congrats").style.display = score === 4 ? 'block' : 'none';
+      if (score === 4) {
+        document.getElementById("congrats").style.display = 'block';
+        const text = `🎈 I passed the Eng. Amiim Quiz with full marks!\n\nAnswers:\n1. MP: ${q1}\n2. Woman MP: ${q2}\n3. LCV: ${q3}\n4. Lives in: ${q4}\n\nThanks for loving Eng. Amiim Creativity.`;
+        updateShareLinks(text);
+      } else {
+        document.getElementById("congrats").style.display = 'none';
+        setTimeout(() => {
+          alert("Try again! Scroll back to retry.");
+          document.getElementById("quizForm").scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
     });
   </script>
 </body>
