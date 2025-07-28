@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🚀 Eng. Amiim | Tech Quiz & Innovation</title>
+  <title><strong>🚀 Eng. Amiim | Tech Quiz & Innovation</strong></title>
 
   <!-- 🌐 Open Graph Meta for WhatsApp, Facebook -->
-  <meta property="og:title" content="🚀 Eng. Amiim | Quiz & Innovation Site 🎉" />
-  <meta property="og:description" content="Test your knowledge in the Eng. Amiim Quiz 🎮 and explore tech innovation from Kibale East! Can you score 4/4?" />
+  <meta property="og:title" content="🔥🚀 Eng. Amiim | Quiz & Innovation Site 🎉" />
+  <meta property="og:description" content="📚💡 Test your knowledge in the Eng. Amiim Quiz 🎮 and explore tech innovation from Kibale East! Can you score 4/4?" />
   <meta property="og:image" content="https://tumwekwaseamiim.github.io/eng-amiim-site/preview.png" />
   <meta property="og:url" content="https://tumwekwaseamiim.github.io/eng-amiim-site/" />
   <meta property="og:type" content="website" />
 
   <!-- 🐦 Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="🚀 Eng. Amiim | Quiz & Innovation Site 🎉" />
-  <meta name="twitter:description" content="Play the quiz and share your score! Built by Eng. Amiim for Kibale East tech pride!" />
+  <meta name="twitter:title" content="🔥🚀 Eng. Amiim | Quiz & Innovation Site 🎉" />
+  <meta name="twitter:description" content="🎯 Play the quiz and share your score! 💬 Built by Eng. Amiim for Kibale East tech pride!" />
   <meta name="twitter:image" content="https://tumwekwaseamiim.github.io/eng-amiim-site/preview.png" />
 
   <link rel="icon" type="image/png" href="https://tumwekwaseamiim.github.io/eng-amiim-site/innov.JPG" />
@@ -66,14 +66,14 @@
       text-shadow: 0 0 10px #00ffcc;
     }
     .tech-slogan {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: bold;
       text-align: center;
       margin: 0;
       padding: 1.5rem;
       background: #001f3f;
       color: white;
-      text-shadow: 0 0 8px #00ccff;
+      text-shadow: 0 0 10px #00ccff;
       animation: pulseText 2s infinite alternate;
     }
     @keyframes pulseText {
@@ -115,15 +115,17 @@
       margin-top: 1rem;
       padding: 0.5rem 1rem;
       background: #00ffcc;
-      color: black;
+      color: #000000;
       border: none;
       cursor: pointer;
       font-weight: bold;
+      font-size: 1.2rem;
     }
     #result {
       margin-top: 2rem;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #00ffcc;
+      font-weight: bold;
     }
     .share-icons {
       margin-top: 1rem;
@@ -133,6 +135,15 @@
       font-size: 1.4rem;
       color: #00ffee;
       text-decoration: none;
+      font-weight: bold;
+    }
+    .share-link-box {
+      margin-top: 2rem;
+      background: #333;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
     }
     footer {
       text-align: center;
@@ -154,10 +165,10 @@
       position: relative;
       z-index: 1;
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
     .animated-name {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       color: #00ffee;
       text-shadow: 0 0 10px #00ffee;
       animation: glowName 2s infinite alternate;
@@ -172,115 +183,110 @@
   </style>
 </head>
 <body>
-<audio autoplay loop>
-  <source src="https://tumwekwaseamiim.github.io/eng-amiim-site/back-for-good.mp3" type="audio/mp3">
-</audio>
-<header>
-  <div class="photo">
-    <div class="scanner"></div>
-  </div>
-  <h1 class="title">Eng. Amiim Tumwekwase</h1>
-  <p style="font-size: 1.2rem; margin-top: 0.5rem;">🌟 Explore Innovation • Play the Quiz • Share Brightly 🌟</p>
-</header>
-<div class="tech-slogan">💡 Kibale East will one day shine in technology 💡</div>
-<section class="led-showcase">
-  <div class="led-item">Pulse Grid</div>
-  <div class="led-item">Amiim Beam</div>
-  <div class="led-item">Digital Roots</div>
-  <div class="led-item">Lightwave Circuit</div>
-</section>
-<section class="section">
-  <h2>🎮 Mini Quiz Game</h2>
-  <div class="game-container">
-    <p>Answer the following questions and test your knowledge!</p>
-    <form id="quizForm">
-      <label>1. Who is your best Member of Parliament (Kamwenge District)?</label>
-      <input type="text" id="q1" required><br>
-      <label>2. Who is your best Woman MP?</label>
-      <input type="text" id="q2" required><br>
-      <label>3. Who is your best Chairperson LCV (Kamwenge District)?</label>
-      <input type="text" id="q3" required><br>
-      <label>4. Where does Eng. Amiim Tumwekwase live?</label>
-      <input type="text" id="q4" required><br>
-      <button type="submit">Submit Answers</button>
-    </form>
-    <div id="result"></div>
-    <div id="congrats" style="display:none; margin-top:1rem; font-size:1.2rem; color:#00ffee;">
-      🎈 Congratulations! You got all answers right! 🎉<br>
-      Thanks for loving Eng. Amiim Creativity.<br><br>
-      <strong>🔗 Share on:</strong>
-      <div class="share-icons">
-        <a href="#" id="shareWhatsapp" target="_blank">📲 WhatsApp</a>
-        <a href="#" id="shareFacebook" target="_blank">📘 Facebook</a>
-        <a href="#" id="shareTwitter" target="_blank">🐦 Twitter</a>
+  <header>
+    <div class="photo">
+      <div class="scanner"></div>
+    </div>
+    <h1 class="title">Eng. Amiim Tumwekwase</h1>
+    <p style="font-size: 1.2rem; margin-top: 0.5rem;">🌟 Explore Innovation • Play the Quiz • Share Brightly 🌟</p>
+  </header>
+  <div class="tech-slogan">💡 Kibale East will one day shine in technology 💡</div>
+  <section class="led-showcase">
+    <div class="led-item">Pulse Grid</div>
+    <div class="led-item">Amiim Beam</div>
+    <div class="led-item">Digital Roots</div>
+    <div class="led-item">Lightwave Circuit</div>
+  </section>
+  <section class="section">
+    <h2>🎮 Mini Quiz Game</h2>
+    <div class="game-container">
+      <p>Answer the following questions and test your knowledge!</p>
+      <form id="quizForm">
+        <label>1. Who is your best Member of Parliament (Kamwenge District)?</label>
+        <input type="text" id="q1" required><br>
+        <label>2. Who is your best Woman MP?</label>
+        <input type="text" id="q2" required><br>
+        <label>3. Who is your best Chairperson LCV (Kamwenge District)?</label>
+        <input type="text" id="q3" required><br>
+        <label>4. Where does Eng. Amiim Tumwekwase live?</label>
+        <input type="text" id="q4" required><br>
+        <button type="submit">Submit Answers</button>
+      </form>
+      <div id="result"></div>
+      <div id="congrats" style="display:none; margin-top:1rem; font-size:1.2rem; color:#00ffee;">
+        🎈 Congratulations! You got all answers right! 🎉<br>
+        Thanks for loving Eng. Amiim Creativity.<br><br>
+        <strong>🔗 Share on:</strong>
+        <div class="share-icons">
+          <a href="#" id="shareWhatsapp" target="_blank">📲 WhatsApp</a>
+          <a href="#" id="shareFacebook" target="_blank">📘 Facebook</a>
+          <a href="#" id="shareTwitter" target="_blank">🐦 Twitter</a>
+        </div>
+        <div class="share-link-box">
+          🔗 Share this link with friends to try the quiz:<br>
+          <span style="color:#00ffcc;">https://tumwekwaseamiim.github.io/eng-amiim-site/</span>
+        </div>
+      </div>
+      <div id="partialShare" style="display:none; margin-top:1rem;">
+        <strong>You tried twice. You scored <span id="finalScore"></span>/4. Share your effort:</strong>
+        <div class="share-icons">
+          <a href="#" id="shareWhatsapp" target="_blank">📲 WhatsApp</a>
+          <a href="#" id="shareFacebook" target="_blank">📘 Facebook</a>
+          <a href="#" id="shareTwitter" target="_blank">🐦 Twitter</a>
+        </div>
+        <div class="share-link-box">
+          🔗 Share this link with friends to try the quiz:<br>
+          <span style="color:#00ffcc;">https://tumwekwaseamiim.github.io/eng-amiim-site/</span>
+        </div>
       </div>
     </div>
-    <div id="partialShare" style="display:none; margin-top:1rem;">
-      <strong>You tried twice. You scored <span id="finalScore"></span>/4. Share your effort:</strong>
-      <div class="share-icons">
-        <a href="#" id="shareWhatsapp" target="_blank">📲 WhatsApp</a>
-        <a href="#" id="shareFacebook" target="_blank">📘 Facebook</a>
-        <a href="#" id="shareTwitter" target="_blank">🐦 Twitter</a>
-      </div>
-    </div>
-    <div id="linkShare" style="display:none; margin-top:1.5rem;">
-      <strong>💬 Invite others to try the quiz:</strong>
-      <div class="share-icons">
-        <a href="https://api.whatsapp.com/send?text=Try the Eng. Amiim Quiz 👉 https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">📲 WhatsApp</a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">📘 Facebook</a>
-        <a href="https://twitter.com/intent/tweet?text=Test your tech knowledge on the Eng. Amiim Quiz 👉 https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">🐦 Twitter</a>
-      </div>
-    </div>
-  </div>
-</section>
-<footer>
-  <svg class="ai-wave" viewBox="0 0 1200 100" preserveAspectRatio="none">
-    <path d="M0,50 C300,150 900,-50 1200,50" fill="none" stroke="#00ffee" stroke-width="2">
-      <animate attributeName="stroke-dashoffset" values="0;1000" dur="5s" repeatCount="indefinite" />
-    </path>
-  </svg>
-  <div class="footer-text">Built by Eng. Amiim | "Creativity in Motion"</div>
-  <div class="animated-name">🤖 Eng. Amiim</div>
-</footer>
-<script>
-  let attempt = 0;
-  function updateShareLinks(text) {
-    const encoded = encodeURIComponent(text);
-    document.getElementById("shareWhatsapp").href = `https://api.whatsapp.com/send?text=${encoded}`;
-    document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=https://tumwekwaseamiim.github.io/eng-amiim-site/&quote=${encoded}`;
-    document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?text=${encoded}`;
-  }
-  document.getElementById("quizForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    attempt++;
-    let score = 0;
-    const q1 = document.getElementById("q1").value.toLowerCase();
-    const q2 = document.getElementById("q2").value.toLowerCase();
-    const q3 = document.getElementById("q3").value.toLowerCase();
-    const q4 = document.getElementById("q4").value.toLowerCase();
-    if (q1.includes("frank") || q1.includes("tumwebaze") || q1.includes("minister")) score++;
-    if (q2.includes("sylivia") || q2.includes("bahireira")) score++;
-    if (q3.includes("karungi") || q3.includes("joseph") || q3.includes("omugabuzi")) score++;
-    if (q4.includes("katalyeba") || q4.includes("kamwenge") || q4.includes("kibale") || q4.includes("rwamwanja")) score++;
-    document.getElementById("result").innerText = `You scored ${score} out of 4!`;
-    if (score === 4) {
-      document.getElementById("congrats").style.display = 'block';
-      document.getElementById("partialShare").style.display = 'none';
-      document.getElementById("linkShare").style.display = 'block';
-      const text = `🎈 I passed the Eng. Amiim Quiz with full marks!\n\nAnswers:\n1. MP: ${q1}\n2. Woman MP: ${q2}\n3. LCV: ${q3}\n4. Lives in: ${q4}\n\nThanks for loving Eng. Amiim Creativity.`;
-      updateShareLinks(text);
-    } else if (attempt < 2) {
-      alert("Oops! Try again.");
-      document.getElementById("quizForm").scrollIntoView({ behavior: 'smooth' });
-    } else {
-      document.getElementById("congrats").style.display = 'none';
-      document.getElementById("partialShare").style.display = 'block';
-      document.getElementById("linkShare").style.display = 'block';
-      document.getElementById("finalScore").innerText = score;
-      const text = `I scored ${score}/4 in the Eng. Amiim Quiz! Try it here:\nhttps://tumwekwaseamiim.github.io/eng-amiim-site/`;
-      updateShareLinks(text);
+  </section>
+  <footer>
+    <svg class="ai-wave" viewBox="0 0 1200 100" preserveAspectRatio="none">
+      <path d="M0,50 C300,150 900,-50 1200,50" fill="none" stroke="#00ffee" stroke-width="2">
+        <animate attributeName="stroke-dashoffset" values="0;1000" dur="5s" repeatCount="indefinite" />
+      </path>
+    </svg>
+    <div class="footer-text">Built by Eng. Amiim | "Creativity in Motion"</div>
+    <div class="animated-name">🤖 Eng. Amiim</div>
+  </footer>
+  <script>
+    let attempt = 0;
+    function updateShareLinks(text) {
+      const encoded = encodeURIComponent(text);
+      document.getElementById("shareWhatsapp").href = `https://api.whatsapp.com/send?text=${encoded}`;
+      document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=https://tumwekwaseamiim.github.io/eng-amiim-site/&quote=${encoded}`;
+      document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?text=${encoded}`;
     }
-  });
-</script>
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      attempt++;
+      let score = 0;
+      const q1 = document.getElementById("q1").value.toLowerCase();
+      const q2 = document.getElementById("q2").value.toLowerCase();
+      const q3 = document.getElementById("q3").value.toLowerCase();
+      const q4 = document.getElementById("q4").value.toLowerCase();
+      if (q1.includes("frank") || q1.includes("tumwebaze") || q1.includes("minister")) score++;
+      if (q2.includes("sylivia") || q2.includes("bahireira")) score++;
+      if (q3.includes("karungi") || q3.includes("joseph") || q3.includes("omugabuzi")) score++;
+      if (q4.includes("katalyeba") || q4.includes("kamwenge") || q4.includes("kibale") || q4.includes("rwamwanja")) score++;
+      document.getElementById("result").innerText = `You scored ${score} out of 4!`;
+      if (score === 4) {
+        document.getElementById("congrats").style.display = 'block';
+        document.getElementById("partialShare").style.display = 'none';
+        const text = `🎈 I passed the Eng. Amiim Quiz with full marks!\n\nAnswers:\n1. MP: ${q1}\n2. Woman MP: ${q2}\n3. LCV: ${q3}\n4. Lives in: ${q4}\n\nThanks for loving Eng. Amiim Creativity.`;
+        updateShareLinks(text);
+      } else if (attempt < 2) {
+        alert("Oops! Try again.");
+        document.getElementById("quizForm").scrollIntoView({ behavior: 'smooth' });
+      } else {
+        document.getElementById("congrats").style.display = 'none';
+        document.getElementById("partialShare").style.display = 'block';
+        document.getElementById("finalScore").innerText = score;
+        const text = `I scored ${score}/4 in the Eng. Amiim Quiz! Try it here:\nhttps://tumwekwaseamiim.github.io/eng-amiim-site/`;
+        updateShareLinks(text);
+      }
+    });
+  </script>
 </body>
 </html>
