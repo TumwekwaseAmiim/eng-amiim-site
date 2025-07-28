@@ -163,37 +163,15 @@
 </head>
 <body>
   <audio autoplay loop>
-    <source src="https://raw.githubusercontent.com/TumwekwaseAmiim/eng-amiim-site/main/Take%20That%20-%20Back%20For%20Good%20Lyrics%20Whatever%20I%20said%20whatever%20I%20did%20I%20didnt%20mean%20it.mp3" type="audio/mp3">
+    <source src="https://raw.githubusercontent.com/TumwekwaseAmiim/eng-amiim-site/main/back-for-good.mp3" type="audio/mp3">
   </audio>
-
-  <header>
-    <div class="photo">
-      <div class="scanner"></div>
-    </div>
-    <div class="title">Eng. Amiim | Tech Innovator</div>
-  </header>
-
-  <section class="led-showcase">
-    <div class="pattern">Pulse Grid</div>
-    <div class="pattern">Amiim Beam</div>
-    <div class="pattern">Digital Roots</div>
-    <div class="pattern">Lightwave Circuit</div>
-  </section>
-
-  <section class="tech-roots">
-    <h2>Where Technology Takes Root_Kibale East_Kamwenge will one day shine in Technology</h2>
-    <svg width="120" height="120">
-      <circle cx="60" cy="60" r="45" stroke="#00ffcc" stroke-width="2" fill="none" />
-      <text x="60" y="65" text-anchor="middle" fill="#00ffcc" font-size="14" font-family="monospace">Eng. Amiim</text>
-    </svg>
-  </section>
 
   <section class="game-section">
     <h2>🎮 Mini Quiz Game</h2>
     <div class="game-container">
       <p>Answer the following questions and test your knowledge!</p>
       <form id="quizForm">
-        <label>1. Who is your best Member of Parliament?</label>
+        <label>1. Who is your best Member of Parliament (Kamwenge District)?</label>
         <input type="text" id="q1" required><br>
         <label>2. Who is your best Woman MP?</label>
         <input type="text" id="q2" required><br>
@@ -208,29 +186,9 @@
         🎈 Congratulations! You got all answers right! 🎉<br>
         Thanks for loving Eng. Amiim Creativity.<br><br>
         <button onclick="shareScore()">Share on Social Media</button>
-        <div class="share-icons">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">Facebook</a>
-          <a href="https://wa.me/?text=Try%20the%20Eng.%20Amiim%20Quiz!%20https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">WhatsApp</a>
-          <a href="https://twitter.com/intent/tweet?text=Try%20the%20Eng.%20Amiim%20Quiz!&url=https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">Twitter</a>
-        </div>
       </div>
     </div>
   </section>
-
-  <section class="ai-deco">
-    <div class="ai-background">
-      <svg width="100%" height="200" preserveAspectRatio="none" viewBox="0 0 1200 200">
-        <path d="M0,100 C300,200 900,0 1200,100" fill="none" stroke="#00ffcc" stroke-width="2" stroke-dasharray="10 5">
-          <animate attributeName="stroke-dashoffset" values="0;1000" dur="5s" repeatCount="indefinite" />
-        </path>
-      </svg>
-      <div class="ai-text">Eng. Amiim Tumwekwase</div>
-    </div>
-  </section>
-
-  <footer>
-    Built by Eng. Amiim | "Creativity in Motion"
-  </footer>
 
   <script>
     function shareScore() {
@@ -238,7 +196,7 @@
       const a2 = document.getElementById("q2").value.trim();
       const a3 = document.getElementById("q3").value.trim();
       const a4 = document.getElementById("q4").value.trim();
-      const text = `🎈 I passed the Eng. Amiim Quiz with full marks!\n\nHere were my answers:\n1. ${a1}\n2. ${a2}\n3. ${a3}\n4. ${a4}\n\nThanks for loving Eng. Amiim Creativity.`;
+      const text = `🎈 I passed the Eng. Amiim Quiz with full marks!\n\nHere were my answers:\n1. MP: ${a1}\n2. Woman MP: ${a2}\n3. LCV: ${a3}\n4. Lives in: ${a4}\n\nThanks for loving Eng. Amiim Creativity.`;
       if (navigator.share) {
         navigator.share({ title: "Eng. Amiim Quiz", text });
       } else {
@@ -257,11 +215,8 @@
       if (q2.includes("sylivia") || q2.includes("bahireira")) score++;
       if (q3.includes("karungi") || q3.includes("joseph") || q3.includes("omugabuzi")) score++;
       if (q4.includes("katalyeba") || q4.includes("kamwenge") || q4.includes("kibale") || q4.includes("rwamwanja")) score++;
-
       document.getElementById("result").innerText = `You scored ${score} out of 4!`;
-      const congrats = document.getElementById("congrats");
-      congrats.style.display = score === 4 ? 'block' : 'none';
-      if (score < 4) alert("You can try again to improve your score.");
+      document.getElementById("congrats").style.display = score === 4 ? 'block' : 'none';
     });
   </script>
 </body>
