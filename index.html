@@ -5,50 +5,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🚀 Eng. Amiim | Tech Quiz & Innovation</title>
 
-  <!-- 🌐 Open Graph Meta for WhatsApp, Facebook -->
+  <!-- Social Meta -->
   <meta property="og:title" content="🔥🚀 Eng. Amiim | Quiz & Innovation Site 🎉" />
   <meta property="og:description" content="📚💡 Test your knowledge in the Eng. Amiim Quiz 🎮 and explore tech innovation from Kibale East! Can you score 4/4?" />
   <meta property="og:image" content="https://tumwekwaseamiim.github.io/eng-amiim-site/preview.png" />
   <meta property="og:url" content="https://tumwekwaseamiim.github.io/eng-amiim-site/" />
   <meta property="og:type" content="website" />
 
-  <!-- 🐦 Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="🔥🚀 Eng. Amiim | Quiz & Innovation Site 🎉" />
   <meta name="twitter:description" content="🎯 Play the quiz and share your score! 💬 Built by Eng. Amiim for Kibale East tech pride!" />
   <meta name="twitter:image" content="https://tumwekwaseamiim.github.io/eng-amiim-site/preview.png" />
 
   <link rel="icon" type="image/png" href="https://tumwekwaseamiim.github.io/eng-amiim-site/innov.JPG" />
+
   <style>
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #8efff7, #ffc8ff);
-      color: white;
+      color: #222;
       overflow-x: hidden;
-      position: relative;
+      padding-bottom: 100px;
     }
-    audio {
+    h1, h2 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .quiz-box {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .quiz-box label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    .quiz-box input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+    .quiz-box button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 12px;
+      background: #222;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .share-buttons {
+      text-align: center;
+      margin-top: 25px;
+    }
+    .share-buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 15px;
+      background: #222;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .audio-controls {
       position: fixed;
       bottom: 10px;
       right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 8px;
       z-index: 9999;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #fff;
+      font-size: 14px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
     }
   </style>
 </head>
 <body>
-  <!-- 🔊 Background Audio -->
-  <audio controls autoplay loop>
-    <source src="https://tumwekwaseamiim.github.io/eng-amiim-site/theme.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
 
-  <!-- Existing site content remains unchanged -->
-  <!-- KEEP ALL PREVIOUS BODY CONTENT HERE (unchanged) -->
+  <!-- 🔊 Audio Controls -->
+  <div class="audio-controls">
+    <audio id="bgAudio" autoplay loop>
+      <source src="https://tumwekwaseamiim.github.io/eng-amiim-site/theme.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="toggleAudio()">⏯️ Play / Pause</button>
+  </div>
+
+  <h1>🎮 Eng. Amiim's Tech Quiz</h1>
+  <h2>Can You Score 4/4? 🚀</h2>
+
+  <div class="quiz-box">
+    <form onsubmit="handleSubmit(event)">
+      <label>1. What does HTML stand for?</label>
+      <input type="text" id="q1" required />
+
+      <label>2. What language is used to style web pages?</label>
+      <input type="text" id="q2" required />
+
+      <label>3. What does CPU stand for?</label>
+      <input type="text" id="q3" required />
+
+      <label>4. Where is Kibale East located?</label>
+      <input type="text" id="q4" required />
+
+      <button type="submit">Submit Answers</button>
+    </form>
+
+    <div class="share-buttons" style="display:none;" id="shareSection">
+      <h3>🎉 Share Your Result</h3>
+      <a href="#" id="shareWhatsapp" target="_blank">WhatsApp</a>
+      <a href="#" id="shareFacebook" target="_blank">Facebook</a>
+      <a href="#" id="shareTwitter" target="_blank">Twitter</a>
+    </div>
+  </div>
+
+  <footer>
+    Built by Eng. Amiim | "Kibale East will one day shine in technology"
+  </footer>
 
   <script>
-    let attempt = 0;
+    function toggleAudio() {
+      const audio = document.getElementById("bgAudio");
+      audio.paused ? audio.play() : audio.pause();
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const answers = {
+        q1: document.getElementById("q1").value.trim().toLowerCase(),
+        q2: document.getElementById("q2").value.trim().toLowerCase(),
+        q3: document.getElementById("q3").value.trim().toLowerCase(),
+        q4: document.getElementById("q4").value.trim().toLowerCase(),
+      };
+
+      let score = 0;
+      if (answers.q1.includes("hyper")) score++;
+      if (answers.q2.includes("css")) score++;
+      if (answers.q3.includes("central")) score++;
+      if (answers.q4.includes("uganda") || answers.q4.includes("kamwenge")) score++;
+
+      const shareText = `🎯 I just scored ${score}/4 on Eng. Amiim's Tech Quiz! 💡 Can you beat me? 👉 https://tumwekwaseamiim.github.io/eng-amiim-site/`;
+
+      updateShareLinks(shareText);
+      document.getElementById("shareSection").style.display = "block";
+      alert("🎉 You scored " + score + "/4! Share your result below.");
+    }
+
     function updateShareLinks(text) {
       const encoded = encodeURIComponent(text);
       document.getElementById("shareWhatsapp").setAttribute("href", `https://api.whatsapp.com/send?text=${encoded}`);
