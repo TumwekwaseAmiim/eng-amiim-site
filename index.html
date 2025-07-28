@@ -18,8 +18,11 @@
   <link rel="icon" type="image/png" href="https://tumwekwaseamiim.github.io/eng-amiim-site/innov.JPG" />
 
  
-  <style>
-  html { scroll-behavior: smooth; }
+ <style>
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -28,16 +31,26 @@
     overflow-x: hidden;
     padding-bottom: 100px;
   }
+
   header {
     text-align: center;
     padding: 4rem 2rem;
     background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
     animation: fadeIn 1.5s ease-in-out;
   }
+
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
+
   .photo {
     width: 200px;
     height: 200px;
@@ -47,6 +60,7 @@
     box-shadow: 0 0 20px hsl(23, 83%, 57%), inset 0 0 10px #00ffcc;
     position: relative;
   }
+
   .scanner {
     position: absolute;
     width: 100%;
@@ -56,17 +70,28 @@
     left: 0;
     animation: scan 3s infinite;
   }
+
   @keyframes scan {
-    0% { transform: translateY(-100px); }
-    50% { transform: translateY(100px); }
-    100% { transform: translateY(-100px); }
+    0% {
+      transform: translateY(-100px);
+    }
+
+    50% {
+      transform: translateY(100px);
+    }
+
+    100% {
+      transform: translateY(-100px);
+    }
   }
+
   .title {
     font-size: 2.5rem;
     margin-top: 1rem;
     font-weight: bold;
     text-shadow: 0 0 10px #00ffcc;
   }
+
   .tech-slogan {
     font-size: 2rem;
     font-weight: bold;
@@ -76,6 +101,7 @@
     color: white;
     text-shadow: 0 0 10px #00ccff;
   }
+
   .led-showcase {
     display: flex;
     flex-wrap: wrap;
@@ -84,30 +110,36 @@
     padding: 2rem;
     background: #111;
   }
+
   .led-item {
     padding: 1rem 2rem;
     background: #222;
     border-left: 5px solid #00ffcc;
     font-weight: bold;
   }
+
   .section {
     padding: 3rem 2rem;
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
   }
+
   .game-container {
     background: #1a1a1a;
     padding: 2rem;
     border-radius: 10px;
     animation: fadeIn 1.2s ease-in-out;
   }
+
   input[type="text"] {
     padding: 0.5rem;
     margin: 1rem 0;
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1rem;
   }
+
   button {
     margin-top: 1rem;
     padding: 0.7rem 1.5rem;
@@ -118,23 +150,40 @@
     font-weight: bold;
     font-size: 1.1rem;
     border-radius: 5px;
+    box-shadow: 0 0 10px #00ffcc;
+    transition: background 0.3s ease, transform 0.2s ease;
   }
+
+  button:hover {
+    background: #00e6b8;
+    transform: scale(1.03);
+  }
+
   #result {
     margin-top: 2rem;
     font-size: 1.3rem;
     color: #00ffcc;
     font-weight: bold;
   }
+
   .share-icons {
     margin-top: 1rem;
   }
+
   .share-icons a {
     margin: 0 10px;
     font-size: 1.4rem;
     color: #00ffee;
     text-decoration: none;
     font-weight: bold;
+    transition: transform 0.2s;
   }
+
+  .share-icons a:hover {
+    transform: scale(1.1);
+    color: #00e6ff;
+  }
+
   .share-link-box {
     margin-top: 2rem;
     background: #333;
@@ -142,7 +191,9 @@
     border-radius: 8px;
     font-size: 1rem;
     font-weight: bold;
+    color: #00ffee;
   }
+
   .audio-controls {
     position: fixed;
     bottom: 10px;
@@ -152,6 +203,7 @@
     border-radius: 8px;
     z-index: 9999;
   }
+
   footer {
     text-align: center;
     padding: 2rem 1rem 1rem;
@@ -159,6 +211,7 @@
     position: relative;
     color: #00ffcc;
   }
+
   footer .ai-wave {
     position: absolute;
     top: 0;
@@ -167,12 +220,14 @@
     height: 80px;
     z-index: 0;
   }
+
   .footer-text {
     position: relative;
     z-index: 1;
     font-weight: bold;
     font-size: 1.3rem;
   }
+
   .animated-name {
     font-size: 1.5rem;
     color: #00ffee;
@@ -182,12 +237,18 @@
     position: relative;
     z-index: 1;
   }
+
   @keyframes glowName {
-    from { text-shadow: 0 0 5px #00ffee; }
-    to { text-shadow: 0 0 20px #00ffee; }
+    from {
+      text-shadow: 0 0 5px #00ffee;
+    }
+
+    to {
+      text-shadow: 0 0 20px #00ffee;
+    }
   }
 
-  /* ✅ Responsive Design for Mobile Phones */
+  /* ✅ Responsive Design */
   @media (max-width: 600px) {
     .photo {
       width: 130px;
@@ -240,6 +301,46 @@
       padding: 6px;
     }
   }
+  footer {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  background: black;
+  position: relative;
+  color: #00ffcc;
+  overflow: hidden;
+}
+
+footer .ai-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 0;
+}
+
+.footer-text {
+  position: relative;
+  z-index: 1;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.animated-name {
+  font-size: 1.5rem;
+  color: #00ffee;
+  text-shadow: 0 0 10px #00ffee;
+  animation: glowName 2s infinite alternate;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes glowName {
+  from { text-shadow: 0 0 5px #00ffee; }
+  to { text-shadow: 0 0 20px #00ffee; }
+}
+
 </style>
 
  
@@ -429,5 +530,30 @@
     alert("✅ Link copied to clipboard!");
   }
 </script>
+<footer>
+  <!-- 🔁 Five animated AI waves -->
+  <svg class="ai-wave" viewBox="0 0 1200 100" preserveAspectRatio="none">
+    <path d="M0,50 C300,150 900,-50 1200,50" fill="none" stroke="#00ffee" stroke-width="2" stroke-dasharray="10 5">
+      <animate attributeName="stroke-dashoffset" values="0;1000" dur="6s" repeatCount="indefinite" />
+    </path>
+    <path d="M0,60 C400,0 800,100 1200,40" fill="none" stroke="#00ffcc" stroke-width="2" stroke-dasharray="8 4">
+      <animate attributeName="stroke-dashoffset" values="1000;0" dur="5s" repeatCount="indefinite" />
+    </path>
+    <path d="M0,70 C200,120 1000,0 1200,70" fill="none" stroke="#00ffff" stroke-width="2" stroke-dasharray="12 6">
+      <animate attributeName="stroke-dashoffset" values="0;500" dur="4s" repeatCount="indefinite" />
+    </path>
+    <path d="M0,40 C600,90 600,10 1200,40" fill="none" stroke="#00e6e6" stroke-width="1.5" stroke-dasharray="14 7">
+      <animate attributeName="stroke-dashoffset" values="0;800" dur="7s" repeatCount="indefinite" />
+    </path>
+    <path d="M0,55 C500,-30 700,130 1200,55" fill="none" stroke="#33fff3" stroke-width="2" stroke-dasharray="6 3">
+      <animate attributeName="stroke-dashoffset" values="1000;0" dur="5s" repeatCount="indefinite" />
+    </path>
+  </svg>
+
+  <!-- Footer text -->
+  <div class="footer-text">Built by Eng. Amiim | "Creativity in Motion"</div>
+  <div class="animated-name">🤖 Eng. Amiim</div>
+</footer>
+
 </body>
 </html>
