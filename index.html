@@ -49,8 +49,10 @@
       100% { transform: translateY(-100px); }
     }
     .title {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-top: 1rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px #00ffcc;
     }
     .section {
       padding: 3rem 2rem;
@@ -102,12 +104,33 @@
       color: #00ffee;
       text-decoration: none;
     }
+    .tech-slogan {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 2rem 0;
+      color: #00ffee;
+      text-shadow: 0 0 5px #00ffcc;
+    }
     footer {
       text-align: center;
       padding: 1rem;
-      background: #000;
+      background: linear-gradient(90deg, #000, #0f0f0f);
       color: #00ffcc;
       font-weight: bold;
+      position: relative;
+    }
+    footer::after {
+      content: 'LED powered footer ✨';
+      display: block;
+      font-size: 0.8rem;
+      color: #00ffee;
+      margin-top: 5px;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #00ffee; }
+      to { text-shadow: 0 0 20px #00ffee; }
     }
   </style>
 </head>
@@ -121,7 +144,10 @@
       <div class="scanner"></div>
     </div>
     <h1 class="title">Eng. Amiim Tumwekwase</h1>
+    <p style="font-size: 1.2rem; margin-top: 0.5rem;">🌟 Explore Innovation • Play the Quiz • Share Brightly 🌟</p>
   </header>
+
+  <div class="tech-slogan">💡 Kibale East will one day shine in technology 💡</div>
 
   <section class="led-showcase">
     <div class="led-item">Pulse Grid</div>
@@ -150,9 +176,9 @@
         🎈 Congratulations! You got all answers right! 🎉<br>
         Thanks for loving Eng. Amiim Creativity.<br><br>
         <div class="share-icons">
-          <a href="#" id="shareWhatsapp" target="_blank">WhatsApp</a>
-          <a href="#" id="shareFacebook" target="_blank">Facebook</a>
-          <a href="#" id="shareTwitter" target="_blank">Twitter</a>
+          <a href="#" id="shareWhatsapp" target="_blank">📲 WhatsApp</a>
+          <a href="#" id="shareFacebook" target="_blank">📘 Facebook</a>
+          <a href="#" id="shareTwitter" target="_blank">🐦 Twitter</a>
         </div>
       </div>
     </div>
@@ -165,7 +191,7 @@
   <script>
     function updateShareLinks(text) {
       const encoded = encodeURIComponent(text);
-      document.getElementById("shareWhatsapp").href = `https://wa.me/?text=${encoded}`;
+      document.getElementById("shareWhatsapp").href = `https://api.whatsapp.com/send?text=${encoded}`;
       document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=https://tumwekwaseamiim.github.io/eng-amiim-site/&quote=${encoded}`;
       document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?text=${encoded}`;
     }
