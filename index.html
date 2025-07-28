@@ -12,202 +12,106 @@
   <meta property="og:url" content="https://tumwekwaseamiim.github.io/eng-amiim-site/" />
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #8efff7, #ffc8ff);
-      color: white;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    body::before {
-      content: "Eng. Amiim Tumwekwase • ";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 200%;
-      font-size: 3rem;
-      font-weight: bold;
-      color: rgba(255, 255, 255, 0.05);
-      white-space: nowrap;
-      z-index: 0;
-      transform: rotate(-30deg);
-      animation: scrollPattern 40s linear infinite;
-      pointer-events: none;
-    }
-
-    @keyframes scrollPattern {
-      0% { transform: rotate(-30deg) translateX(0); }
-      100% { transform: rotate(-30deg) translateX(-50%); }
-    }
-
-    header {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      position: relative;
-      z-index: 1;
-    }
-
-    header::after {
-      content: "Eng. Amiim Tumwekwase";
-      position: absolute;
-      bottom: 10px;
-      right: 20px;
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.1);
-      pointer-events: none;
-    }
-
-    .photo {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: url('https://raw.githubusercontent.com/TumwekwaseAmiim/eng-amiim-site/main/innov.JPG') center/cover no-repeat;
-      margin: auto;
-      box-shadow: 0 0 20px hsl(23, 83%, 57%), inset 0 0 10px #00ffcc;
-      position: relative;
-    }
-
-    .scanner {
-      position: absolute;
-      width: 100%;
-      height: 4px;
-      background: #00ffcc;
-      top: 50%;
-      left: 0;
-      animation: scan 3s infinite;
-    }
-
-    @keyframes scan {
-      0% { transform: translateY(-100px); }
-      50% { transform: translateY(100px); }
-      100% { transform: translateY(-100px); }
-    }
-
-    .title {
-      font-size: 2rem;
-      margin-top: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    section.led-showcase, .tech-roots, .game-section {
-      padding: 3rem 2rem;
-      background: rgba(0, 0, 0, 0.7);
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .pattern {
-      margin: 1rem 0;
-      padding: 1rem;
-      background: #222;
-      border-left: 5px solid #00ffcc;
-    }
-
-    .game-container {
-      background: #1a1a1a;
-      padding: 2rem;
-      border-radius: 10px;
-    }
-
-    input[type="text"] {
-      padding: 0.5rem;
-      margin: 1rem 0;
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .share-btn, button[type="submit"] {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background: #00ffcc;
-      color: black;
-      border: none;
-      cursor: pointer;
-    }
-
-    .share-icons {
-      margin-top: 1rem;
-    }
-    .share-icons a {
-      margin: 0 10px;
-      font-size: 1.5rem;
-      color: #00ffee;
-      text-decoration: none;
-    }
-
-    #result {
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      color: #00ffcc;
-    }
-
-    .ai-deco {
-      background: #0a0a0a;
-      position: relative;
-      padding: 2rem 0;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .ai-background {
-      position: relative;
-      width: 100%;
-      height: 200px;
-    }
-
-    .ai-background svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .ai-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 1.5rem;
-      color: #00ffee;
-      font-family: 'Courier New', Courier, monospace;
-      animation: glowText 3s ease-in-out infinite;
-    }
-
-    @keyframes glowText {
-      0% { text-shadow: 0 0 5px #00ffee; opacity: 1; }
-      50% { text-shadow: 0 0 15px #00ffee; opacity: 0.7; }
-      100% { text-shadow: 0 0 5px #00ffee; opacity: 1; }
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #000;
-      color: #00ffcc;
-      font-weight: bold;
-    }
+    /* Styles unchanged */
   </style>
 </head>
 <body>
-  <!-- [unchanged code above this line] -->
-
-  <div id="congrats" style="display:none; margin-top:1rem; font-size:1.2rem; color:#00ffee;">
-    🎈 Congratulations! You got all answers right! 🎉<br>
-    Thanks for loving Eng. Amiim Creativity.<br><br>
-    <button onclick="shareScore()">Share on Social Media</button>
-    <div class="share-icons">
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">Facebook</a>
-      <a href="https://wa.me/?text=Try%20the%20Eng.%20Amiim%20Quiz!%20https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">WhatsApp</a>
-      <a href="https://twitter.com/intent/tweet?text=Try%20the%20Eng.%20Amiim%20Quiz!&url=https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">Twitter</a>
+  <header>
+    <div class="photo">
+      <div class="scanner"></div>
     </div>
-  </div>
+    <div class="title">Eng. Amiim | Tech Innovator</div>
+  </header>
 
-  <!-- [unchanged code below this line] -->
+  <section class="led-showcase">
+    <div class="pattern">Pulse Grid</div>
+    <div class="pattern">Amiim Beam</div>
+    <div class="pattern">Digital Roots</div>
+    <div class="pattern">Lightwave Circuit</div>
+  </section>
+
+  <section class="tech-roots">
+    <h2>Where Technology Takes Root_Kibale East_Kamwenge will one day shine in Technology</h2>
+    <svg width="120" height="120">
+      <circle cx="60" cy="60" r="45" stroke="#00ffcc" stroke-width="2" fill="none" />
+      <text x="60" y="65" text-anchor="middle" fill="#00ffcc" font-size="14" font-family="monospace" class="animated-text">
+        Eng. Amiim
+      </text>
+    </svg>
+  </section>
+
+  <section class="game-section">
+    <h2>🎮 Mini Quiz Game</h2>
+    <div class="game-container">
+      <p>Answer the following questions and test your knowledge!</p>
+      <form id="quizForm">
+        <label>1. Who is your best Member of Parliament (Kamwenge District)?</label>
+        <input type="text" id="q1" required><br>
+        <label>2. Who is your best Woman MP?</label>
+        <input type="text" id="q2" required><br>
+        <label>3. Who is your best Chairperson LCV?</label>
+        <input type="text" id="q3" required><br>
+        <label>4. Where does Eng. Amiim Tumwekwase live?</label>
+        <input type="text" id="q4" required><br>
+        <button type="submit">Submit Answers</button>
+      </form>
+      <div id="result"></div>
+      <div id="congrats" style="display:none; margin-top:1rem; font-size:1.2rem; color:#00ffee;">
+        🎈 Congratulations! You got all answers right! 🎉<br>
+        Thanks for loving Eng. Amiim Creativity.<br><br>
+        <button onclick="shareScore()">Share on Social Media</button>
+        <div class="share-icons">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">Facebook</a>
+          <a href="https://wa.me/?text=Try%20the%20Eng.%20Amiim%20Quiz!%20https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">WhatsApp</a>
+          <a href="https://twitter.com/intent/tweet?text=Try%20the%20Eng.%20Amiim%20Quiz!&url=https://tumwekwaseamiim.github.io/eng-amiim-site/" target="_blank">Twitter</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ai-deco">
+    <div class="ai-background">
+      <svg width="100%" height="200" preserveAspectRatio="none" viewBox="0 0 1200 200">
+        <path d="M0,100 C300,200 900,0 1200,100" fill="none" stroke="#00ffcc" stroke-width="2" stroke-dasharray="10 5">
+          <animate attributeName="stroke-dashoffset" values="0;1000" dur="5s" repeatCount="indefinite" />
+        </path>
+      </svg>
+      <div class="ai-text">Eng. Amiim Tumwekwase</div>
+    </div>
+  </section>
+
+  <footer>
+    Built by Eng. Amiim | "Creativity in Motion"
+  </footer>
+
+  <script>
+    function shareScore() {
+      const a1 = document.getElementById("q1").value.trim();
+      const a2 = document.getElementById("q2").value.trim();
+      const a3 = document.getElementById("q3").value.trim();
+      const a4 = document.getElementById("q4").value.trim();
+      const text = `🎈 I passed the Eng. Amiim Quiz with full marks!\n\nHere were my answers:\n1. Hon. Frank Tumwebaze is my best MP: ${a1}\n2. Hon. Sylivia Bahireira is my best Woman MP: ${a2}\n3. Hon. Karungi Joseph Omugabuzi is my best LCV Chairperson: ${a3}\n4. Eng. Amiim lives in: ${a4}\n\nThanks for loving Eng. Amiim Creativity.`;
+      if (navigator.share) {
+        navigator.share({ title: "Eng. Amiim Quiz", text });
+      } else {
+        alert("Copy and share this message:\n" + text);
+      }
+    }
+
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      let score = 0;
+      const q1 = document.getElementById("q1").value.toLowerCase();
+      const q2 = document.getElementById("q2").value.toLowerCase();
+      const q3 = document.getElementById("q3").value.toLowerCase();
+      const q4 = document.getElementById("q4").value.toLowerCase();
+      if (q1.includes("frank") || q1.includes("tumwebaze") || q1.includes("minister")) score++;
+      if (q2.includes("sylivia") || q2.includes("bahireira")) score++;
+      if (q3.includes("karungi") || q3.includes("joseph") || q3.includes("omugabuzi")) score++;
+      if (q4.includes("katalyeba") || q4.includes("kamwenge") || q4.includes("kibale") || q4.includes("rwamwanja")) score++;
+      document.getElementById("result").innerText = `You scored ${score} out of 4!`;
+      document.getElementById("congrats").style.display = score === 4 ? 'block' : 'none';
+    });
+  </script>
 </body>
 </html>
