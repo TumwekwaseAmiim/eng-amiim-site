@@ -140,24 +140,25 @@
     font-size: 1rem;
   }
 
-  button {
-    margin-top: 1rem;
-    padding: 0.7rem 1.5rem;
-    background: #00ffcc;
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #00ffcc;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
+  button[type="submit"] {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  background: #0078ff; /* Deep vibrant blue */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #00ccff;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
 
-  button:hover {
-    background: #00e6b8;
-    transform: scale(1.03);
-  }
+button[type="submit"]:hover {
+  background: #005ecb;
+  transform: scale(1.03);
+}
+
 
   #result {
     margin-top: 2rem;
@@ -301,46 +302,7 @@
       padding: 6px;
     }
   }
-  footer {
-  text-align: center;
-  padding: 2rem 1rem 1rem;
-  background: black;
-  position: relative;
-  color: #00ffcc;
-  overflow: hidden;
-}
-
-footer .ai-wave {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  z-index: 0;
-}
-
-.footer-text {
-  position: relative;
-  z-index: 1;
-  font-weight: bold;
-  font-size: 1.3rem;
-}
-
-.animated-name {
-  font-size: 1.5rem;
-  color: #00ffee;
-  text-shadow: 0 0 10px #00ffee;
-  animation: glowName 2s infinite alternate;
-  margin-top: 8px;
-  position: relative;
-  z-index: 1;
-}
-
-@keyframes glowName {
-  from { text-shadow: 0 0 5px #00ffee; }
-  to { text-shadow: 0 0 20px #00ffee; }
-}
-
+  
 </style>
 
  
