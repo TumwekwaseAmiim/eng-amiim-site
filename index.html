@@ -5,20 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🚀 Eng. Amiim | Tech Quiz & Innovation</title>
 
-  <!-- 🌐 Open Graph Meta for WhatsApp, Facebook -->
+  <!-- Social Meta -->
   <meta property="og:title" content="🔥🚀 Eng. Amiim | Quiz & Innovation Site 🎉" />
   <meta property="og:description" content="📚💡 Test your knowledge in the Eng. Amiim Quiz 🎮 and explore tech innovation from Kibale East! Can you score 4/4?" />
   <meta property="og:image" content="https://tumwekwaseamiim.github.io/eng-amiim-site/preview.png" />
   <meta property="og:url" content="https://tumwekwaseamiim.github.io/eng-amiim-site/" />
   <meta property="og:type" content="website" />
-
-  <!-- 🐦 Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="🔥🚀 Eng. Amiim | Quiz & Innovation Site 🎉" />
   <meta name="twitter:description" content="🎯 Play the quiz and share your score! 💬 Built by Eng. Amiim for Kibale East tech pride!" />
   <meta name="twitter:image" content="https://tumwekwaseamiim.github.io/eng-amiim-site/preview.png" />
-
   <link rel="icon" type="image/png" href="https://tumwekwaseamiim.github.io/eng-amiim-site/innov.JPG" />
+
   <style>
     html { scroll-behavior: smooth; }
     body {
@@ -27,12 +25,17 @@
       background: linear-gradient(135deg, #8efff7, #ffc8ff);
       color: white;
       overflow-x: hidden;
-      position: relative;
+      padding-bottom: 100px;
     }
     header {
       text-align: center;
       padding: 4rem 2rem;
       background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .photo {
       width: 200px;
@@ -67,16 +70,10 @@
       font-size: 2rem;
       font-weight: bold;
       text-align: center;
-      margin: 0;
       padding: 1.5rem;
       background: #001f3f;
       color: white;
       text-shadow: 0 0 10px #00ccff;
-      animation: pulseText 2s infinite alternate;
-    }
-    @keyframes pulseText {
-      0% { opacity: 1; }
-      100% { opacity: 0.7; }
     }
     .led-showcase {
       display: flex;
@@ -101,6 +98,7 @@
       background: #1a1a1a;
       padding: 2rem;
       border-radius: 10px;
+      animation: fadeIn 1.2s ease-in-out;
     }
     input[type="text"] {
       padding: 0.5rem;
@@ -144,6 +142,15 @@
       font-size: 1rem;
       font-weight: bold;
     }
+    .audio-controls {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border-radius: 8px;
+      z-index: 9999;
+    }
     footer {
       text-align: center;
       padding: 2rem 1rem 1rem;
@@ -178,23 +185,13 @@
       from { text-shadow: 0 0 5px #00ffee; }
       to { text-shadow: 0 0 20px #00ffee; }
     }
-    .audio-controls {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px;
-      border-radius: 8px;
-      z-index: 9999;
-    }
   </style>
 </head>
 <body>
   <!-- 🔊 Audio -->
   <div class="audio-controls">
-    <audio id="bgAudio" autoplay loop>
-      <source src="https://tumwekwaseamiim.github.io/eng-amiim-site/theme.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
+    <audio id="bgAudio" autoplay loop muted>
+      <source src="https://tumwekwaseamiim.github.io/eng-amiim-site/theme.mp3" type="audio/mpeg" />
     </audio>
     <button onclick="toggleAudio()">⏯️ Pause/Play</button>
   </div>
@@ -219,7 +216,6 @@
   <section class="section">
     <h2>🎮 Mini Quiz Game</h2>
     <div class="game-container">
-      <p>Answer the following questions and test your knowledge!</p>
       <form id="quizForm">
         <label>1. Who is your best Member of Parliament (Kamwenge District)?</label>
         <input type="text" id="q1" required>
@@ -230,6 +226,7 @@
         <label>4. Where does Eng. Amiim Tumwekwase live?</label>
         <input type="text" id="q4" required>
         <button type="submit">Submit Answers</button>
+        <button type="button" id="retryBtn" style="display:none;">🔁 Retry</button>
       </form>
       <div id="result"></div>
       <div id="congrats" style="display:none;">
@@ -275,8 +272,19 @@
 
     function toggleAudio() {
       const audio = document.getElementById("bgAudio");
-      audio.paused ? audio.play() : audio.pause();
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
     }
+
+    // Unmute and autoplay fix for browsers
+    window.addEventListener("click", () => {
+      const audio = document.getElementById("bgAudio");
+      audio.muted = false;
+      audio.play().catch(() => {}); // Prevent error
+    }, { once: true });
 
     function updateShareLinks(text) {
       const encoded = encodeURIComponent(text);
@@ -285,25 +293,40 @@
       document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?text=${encoded}`;
     }
 
+    function resetQuiz() {
+      document.getElementById("quizForm").reset();
+      document.getElementById("result").innerText = "";
+      document.getElementById("congrats").style.display = 'none';
+      document.getElementById("partialShare").style.display = 'none';
+      document.getElementById("retryBtn").style.display = 'none';
+      attempt = 0;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.getElementById("retryBtn").addEventListener("click", resetQuiz);
+
     document.getElementById("quizForm").addEventListener("submit", function(event) {
       event.preventDefault();
       attempt++;
+
       let score = 0;
       const q1 = document.getElementById("q1").value.toLowerCase();
       const q2 = document.getElementById("q2").value.toLowerCase();
       const q3 = document.getElementById("q3").value.toLowerCase();
       const q4 = document.getElementById("q4").value.toLowerCase();
+
       if (q1.includes("frank") || q1.includes("tumwebaze")) score++;
       if (q2.includes("sylivia") || q2.includes("bahireira")) score++;
       if (q3.includes("karungi") || q3.includes("joseph") || q3.includes("omugabuzi")) score++;
       if (q4.includes("katalyeba") || q4.includes("kamwenge") || q4.includes("kibale") || q4.includes("rwamwanja")) score++;
 
       document.getElementById("result").innerText = `You scored ${score} out of 4!`;
+      document.getElementById("retryBtn").style.display = 'inline-block';
 
       if (score === 4) {
         document.getElementById("congrats").style.display = 'block';
         document.getElementById("partialShare").style.display = 'none';
-        const text = `🎈 I passed the Eng. Amiim Quiz with full marks!\n1. MP: ${q1}\n2. Woman MP: ${q2}\n3. LCV: ${q3}\n4. Lives in: ${q4}`;
+        const text = `🎉 I passed Eng. Amiim's Quiz with full marks!\n1. MP: ${q1}\n2. Woman MP: ${q2}\n3. LCV: ${q3}\n4. Lives in: ${q4}`;
         updateShareLinks(text);
       } else if (attempt < 2) {
         alert("Oops! Try again.");
@@ -311,9 +334,14 @@
         document.getElementById("congrats").style.display = 'none';
         document.getElementById("partialShare").style.display = 'block';
         document.getElementById("finalScore").innerText = score;
-        const text = `I scored ${score}/4 in the Eng. Amiim Quiz! Try it here: https://tumwekwaseamiim.github.io/eng-amiim-site/`;
+        const text = `📊 I scored ${score}/4 in the Eng. Amiim Quiz. Play here 👉 https://tumwekwaseamiim.github.io/eng-amiim-site/`;
         updateShareLinks(text);
       }
+
+      // Scroll to results
+      setTimeout(() => {
+        document.getElementById("result").scrollIntoView({ behavior: 'smooth' });
+      }, 300);
     });
   </script>
 </body>
