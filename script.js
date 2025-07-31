@@ -11,12 +11,12 @@ function rotateSong() {
 }
 bgAudio.addEventListener("ended", rotateSong);
 
-// Autoplay after interaction
-window.addEventListener("click", () => {
+function autoplayOnFirstClick() {
   if (!isMuted && bgAudio.paused) {
     bgAudio.play().catch(() => {});
   }
-}, { once: true });
+}
+window.addEventListener("click", autoplayOnFirstClick, { once: true });
 
 function toggleAudio() {
   isMuted = !isMuted;
@@ -42,6 +42,7 @@ if (frankPhoto && frankAudio && goalAudio) {
   frankPhoto.addEventListener("click", () => {
     bgAudio.pause();
     bgAudio.removeEventListener("ended", rotateSong);
+    window.removeEventListener("click", autoplayOnFirstClick);
 
     frankAudio.currentTime = 0;
     goalAudio.currentTime = 0;
@@ -72,15 +73,30 @@ if (frankPhoto && frankAudio && goalAudio) {
 // 🎈 Balloon Pop Game
 let score = parseInt(localStorage.getItem("score")) || 0;
 let popped = 0;
-const totalBalloons = 6;
-let gameCompleted = localStorage.getItem("balloonGameCompleted") === "true";
+const totalBalloons = 9;
+let gameCompleted = false;
 
-if (gameCompleted) {
-  document.querySelector(".balloon-row").innerHTML = `
-    <p style="color: #00ffcc; font-weight: bold;">🎯 You already completed this game. Well done!</p>
-  `;
-  document.getElementById("scoreDisplay").innerText = `🎯 Score: ${localStorage.getItem("score") || 6}`;
+function setupBalloons() {
+  const balloonRow = document.querySelector(".balloon-row");
+  if (!balloonRow) return;
+
+  balloonRow.innerHTML = "";
+  for (let i = 1; i <= totalBalloons; i++) {
+    const balloon = document.createElement("img");
+    const imgNum = ((i - 1) % 3) + 1; // Repeat 1,2,3 pattern
+    balloon.src = `balloon${imgNum}.png`;
+    balloon.alt = `Balloon ${i}`;
+    balloon.className = "balloon";
+    balloon.onclick = () => explodeBalloon(balloon);
+    balloonRow.appendChild(balloon);
+  }
+
+  popped = 0;
+  gameCompleted = false;
+  document.getElementById("scoreDisplay").innerText = `🎯 Score: ${score}`;
 }
+
+setupBalloons();
 
 function explodeBalloon(el) {
   if (!el || el.classList.contains("popped") || gameCompleted) return;
@@ -92,8 +108,7 @@ function explodeBalloon(el) {
   const explosion = document.createElement("div");
   explosion.className = "explosion";
   explosion.innerText = "💥 ENG. AMIIM 💥";
-  const burstArea = document.getElementById("burstLetters");
-  burstArea?.appendChild(explosion);
+  document.getElementById("burstLetters")?.appendChild(explosion);
   setTimeout(() => explosion.remove(), 1000);
 
   score++;
@@ -102,9 +117,9 @@ function explodeBalloon(el) {
   localStorage.setItem("score", score);
 
   if (popped === totalBalloons) {
-    localStorage.setItem("balloonGameCompleted", "true");
-    const balloonRow = document.querySelector(".balloon-row");
+    gameCompleted = true;
 
+    const balloonRow = document.querySelector(".balloon-row");
     const congrats = document.createElement("div");
     congrats.className = "thanks-msg";
     congrats.innerText = "🎉 Congratulations! You popped all balloons!";
@@ -117,9 +132,14 @@ function explodeBalloon(el) {
     quiz.innerHTML = `
       <h3>👑 Be a Winner!</h3>
       <p>Select our development hero to win:</p>
-      <img src="frank_photo.jpg" alt="Hon. Frank Tumwebaze" onclick="winnerSelected()" style="width:300px;border:3px solid #00ffcc;border-radius:10px;cursor:pointer;box-shadow:0 0 15px #00ffaa;">
+      <img src="frank-photo.jpg" alt="Hon. Frank Tumwebaze" onclick="winnerSelected()" style="width:300px;border:3px solid #00ffcc;border-radius:10px;cursor:pointer;box-shadow:0 0 15px #00ffaa;">
     `;
     balloonRow.appendChild(quiz);
+
+    const playAgain = document.createElement("button");
+    playAgain.innerText = "🔁 Play Again";
+    playAgain.onclick = setupBalloons;
+    balloonRow.appendChild(playAgain);
   }
 }
 
@@ -143,7 +163,7 @@ function startGame() {
   const sound = new Audio("goal.mp3");
   sound.play().catch(() => {});
 
-  let teamImage = userTeam === "Arsenal"
+  const teamImage = userTeam === "Arsenal"
     ? '<img src="arsenal.jpg" class="fade-in-img" alt="Arsenal Team">'
     : '<img src="manutd.jpg" class="fade-in-img" alt="Manchester United Team">';
 
@@ -166,14 +186,14 @@ function shareSite() {
   const shareButtons = `
     <div style="margin-top: 10px">
       <a href="https://wa.me/?text=${encodedUrl}" target="_blank">📱 WhatsApp</a>
-      <a href="https://twitter.com/intent/tweet?url=${encodedUrl}" target="_blank">🐦 Twitter</a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank">📘 Facebook</a>
+      <a href="https://twitter.com/intent/tweet?url=${encodedUrl}" target="_blank">🕎 Twitter</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank">💼 Facebook</a>
     </div>
   `;
   document.getElementById("gameCanvas").innerHTML += shareButtons;
 }
 
-// 🕹️ Canvas Game
+// 🕹️ Canvas Football Game
 const canvas = document.getElementById("footballGame");
 const ctx = canvas?.getContext("2d");
 let player = { x: 50, y: 180, w: 20, h: 20 };
