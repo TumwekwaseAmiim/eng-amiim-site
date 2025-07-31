@@ -16,7 +16,7 @@
   <link rel="preload" href="goal.mp3" as="audio">
   <link rel="preload" href="kick.mp3" as="audio">
   <link rel="preload" href="game completion.mp3" as="audio">
-  <link rel="preload" href="goal celebrations.mp3" as="audio">
+  <link rel="preload" href="goal-celebration.mp3" as="audio">
 </head>
 <body>
 
@@ -25,6 +25,36 @@
   <h1 class="title">🚀 Eng. Amiim Tech Game Zone</h1>
   <p class="tech-slogan">Where Technology Takes Root in Kibale East</p>
 </header>
+
+<!-- 🎖️ Hon. Frank Section -->
+<section class="frank-section">
+  <h2>🎖️ Hon. Frank Tumwebaze</h2>
+  <img src="frank.jpg" id="frank-photo" alt="Frank" class="click-photo" />
+  <audio id="frank-audio" src="frank-song.mp3"></audio>
+  <audio id="goal-audio" src="goal-celebration.mp3"></audio>
+</section>
+
+<!-- 🌟 Innovator Section -->
+<section class="innovative-photo">
+  <h2>🌟 Innovator of the Site</h2>
+  <img src="amiim.jpg" alt="Eng. Amiim Tumwekwase" class="amiim-photo" />
+</section>
+
+<!-- 🎈 Balloon Game -->
+<section class="section">
+  <h2>🎈 Balloon Popping Game</h2>
+  <div class="balloon-instruction">🎯 <strong>Tip:</strong> Tap on each balloon to earn scores!</div>
+  <div class="balloon-row">
+    <img src="balloon1.png" class="balloon" onclick="explodeBalloon(this)">
+    <img src="balloon2.png" class="balloon" onclick="explodeBalloon(this)">
+    <img src="balloon3.png" class="balloon" onclick="explodeBalloon(this)">
+    <img src="balloon1.png" class="balloon" onclick="explodeBalloon(this)">
+    <img src="balloon2.png" class="balloon" onclick="explodeBalloon(this)">
+    <img src="balloon3.png" class="balloon" onclick="explodeBalloon(this)">
+  </div>
+  <div id="scoreDisplay">🎯 Score: 0</div>
+  <div id="burstLetters" class="letters"></div>
+</section>
 
 <!-- ⚽ Game Development Preview -->
 <section class="section">
@@ -41,22 +71,7 @@
   <div class="led-item">Lightwave Circuit</div>
 </section>
 
-<!-- 🎈 Balloon Game -->
-<section class="section">
-  <h2>🎈 Balloon Popping Game</h2>
-  <div class="balloon-row">
-    <img src="balloon1.png" class="balloon" onclick="explodeBalloon(this)">
-    <img src="balloon2.png" class="balloon" onclick="explodeBalloon(this)">
-    <img src="balloon3.png" class="balloon" onclick="explodeBalloon(this)">
-    <img src="balloon1.png" class="balloon" onclick="explodeBalloon(this)">
-    <img src="balloon2.png" class="balloon" onclick="explodeBalloon(this)">
-    <img src="balloon3.png" class="balloon" onclick="explodeBalloon(this)">
-  </div>
-  <div id="scoreDisplay">🎯 Score: 0</div>
-  <div id="burstLetters" class="letters"></div>
-</section>
-
-<!-- 🎾 Arsenal vs Manchester Game (Text-Based) -->
+<!-- 🎾 Arsenal vs Manchester Game -->
 <section class="section">
   <h2>⚽ Arsenal vs Manchester United</h2>
   <p>This is not a real European match – just a fun game to explore technology. Suggestions for future improvement are welcome!</p>
@@ -82,9 +97,22 @@
   <p>Site Created by Eng. Amiim | “Creativity in Motion”</p>
   <p><a href="innov.JPG" target="_blank" style="color:#00ffcc">📸 View Innov Photo</a></p>
   <p><a href="preview.png" target="_blank" style="color:#00ffcc">🌐 Preview Screenshot</a></p>
+
+  <!-- 👁️ Real-time Visitor Counter -->
+  <div style="margin-top: 20px;">
+    <a href="https://www.freecounterstat.com" title="page counter">
+      <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=2zuyjcak752ens7gqwjlu4f8nja4823b"
+           border="0"
+           title="page counter"
+           alt="page counter"
+           style="box-shadow: 0 0 10px #00ffcc; border-radius: 5px;" />
+    </a>
+    <p style="color:#00ffcc; font-size: 14px;">👁️ Real-time Visitor Count</p>
+  </div>
 </footer>
 
-<!-- 🎉 Background Music Toggle -->
+
+<!-- 🎵 Background Music Toggle -->
 <div class="audio-controls">
   <button onclick="toggleAudio()">🎵 Toggle Music</button>
 </div>

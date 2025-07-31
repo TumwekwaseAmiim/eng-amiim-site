@@ -132,6 +132,16 @@ header {
   margin-top: 20px;
 }
 
+.balloon-instruction {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #00ffcc;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 18px;
+  width: fit-content;
+  margin: 15px auto;
+}
+
 .balloon {
   width: 80px;
   height: auto;

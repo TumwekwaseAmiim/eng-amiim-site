@@ -15,11 +15,27 @@ function toggleAudio() {
   isMuted = !isMuted;
   if (isMuted) {
     bgAudio.pause();
-    document.getElementById("muteButton").innerText = "🔈 Unmute";
+    document.getElementById("muteButton")?.innerText = "🔈 Unmute";
   } else {
     bgAudio.play();
-    document.getElementById("muteButton").innerText = "🔊 Mute";
+    document.getElementById("muteButton")?.innerText = "🔊 Mute";
   }
+}
+
+// 🎖️ Frank Photo Click Sound + Goal Celebration
+const frankPhoto = document.getElementById("frank-photo");
+const frankAudio = document.getElementById("frank-audio");
+const goalAudio = document.getElementById("goal-audio");
+
+if (frankPhoto && frankAudio && goalAudio) {
+  frankPhoto.addEventListener("click", () => {
+    // Stop other music
+    bgAudio.pause();
+    frankAudio.currentTime = 0;
+    goalAudio.currentTime = 0;
+    frankAudio.play();
+    goalAudio.play();
+  });
 }
 
 // 🎈 Balloon Pop Game with Sound + Score + Congrats
@@ -57,7 +73,6 @@ function explodeBalloon(el) {
     const cheer = new Audio("goal celebrations.mp3");
     cheer.play();
 
-    // Show Frank quiz with image and music
     const quiz = document.createElement("div");
     quiz.innerHTML = `
       <h3>👑 Be a Winner!</h3>
@@ -130,28 +145,22 @@ function draw() {
   if (!ctx) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Player
   ctx.fillStyle = "#00ffcc";
   ctx.fillRect(player.x, player.y, player.w, player.h);
 
-  // AI
   ctx.fillStyle = "#ff00cc";
   ctx.fillRect(ai.x, ai.y, ai.w, ai.h);
 
-  // Ball
   ctx.beginPath();
   ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
   ctx.fillStyle = "#ffffff";
   ctx.fill();
 
-  // Update Ball
   ball.x += ball.vx;
   ball.y += ball.vy;
 
-  // Bounce off walls
   if (ball.y < 0 || ball.y > canvas.height) ball.vy *= -1;
 
-  // Collision with player
   if (
     ball.x - ball.r < player.x + player.w &&
     ball.y > player.y &&
@@ -162,7 +171,6 @@ function draw() {
     kick.play();
   }
 
-  // Collision with AI
   if (
     ball.x + ball.r > ai.x &&
     ball.y > ai.y &&
@@ -171,7 +179,6 @@ function draw() {
     ball.vx *= -1;
   }
 
-  // Goal detection
   if (ball.x < 0) {
     scoreCanvas.ai++;
     resetBall();
@@ -180,11 +187,9 @@ function draw() {
     resetBall();
   }
 
-  // Update score
   const scoreBoard = document.getElementById("scoreBoard");
   if (scoreBoard) scoreBoard.innerText = `You: ${scoreCanvas.player} | AI: ${scoreCanvas.ai}`;
 
-  // AI Movement
   if (ball.y > ai.y + ai.h / 2) ai.y += 2;
   else ai.y -= 2;
 
