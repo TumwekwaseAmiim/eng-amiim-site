@@ -16,49 +16,32 @@ html {
   html {
     font-size: 14px;
   }
+
   .balloon-row,
   .led-showcase {
     flex-direction: column;
     align-items: center;
   }
-}
 
-/* Fade-in Animation for Images */
-.fade-in-img {
-  animation: fadeIn 1s ease-in-out;
-}
+  .balloon {
+    width: 60px;
+  }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
+  .title {
+    font-size: 24px;
+  }
 
-.section {
-  padding: 30px;
-  border-bottom: 1px solid #222;
-}
+  .tech-slogan {
+    font-size: 14px;
+  }
 
-input, button {
-  padding: 10px;
-  margin: 10px;
-  border: none;
-  border-radius: 5px;
-}
+  .section {
+    padding: 20px;
+  }
 
-button {
-  background-color: #00ffcc;
-  color: #000;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 0 10px #00ffcc;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-button:hover,
-button:focus {
-  background-color: #00ffaa;
-  transform: scale(1.05);
-  outline: none;
+  .game-area {
+    font-size: 16px;
+  }
 }
 
 /* Header and Branding */
@@ -92,6 +75,55 @@ header {
   100% { transform: translateX(100%); }
 }
 
+/* Frank & Amiim Photos */
+.click-photo,
+.amiim-photo {
+  width: 200px;
+  max-width: 90%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 0 12px #00ffcc;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.click-photo:hover,
+.amiim-photo:hover {
+  transform: scale(1.05);
+}
+
+/* Glowing Frank Pulse */
+.frank-pulse {
+  animation: glowPrompt 1.5s infinite alternate;
+  border: 3px solid #00ffcc;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffcc;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+@keyframes glowPrompt {
+  0% { box-shadow: 0 0 5px #00ffcc; transform: scale(1); }
+  100% { box-shadow: 0 0 25px #00ffaa; transform: scale(1.05); }
+}
+
+/* Fade-in Animation */
+.fade-in-img {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Section Styling */
+.section {
+  padding: 30px;
+  border-bottom: 1px solid #222;
+}
+
 /* LED Showcase */
 .led-showcase {
   display: flex;
@@ -108,9 +140,9 @@ header {
   border-radius: 10px;
   font-weight: bold;
   box-shadow: 0 0 10px #00ffcc;
-  transition: transform 0.2s, background-color 0.3s;
   background-color: rgba(0, 255, 204, 0.05);
   animation: pulseLED 2s infinite alternate;
+  transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
 }
 
 @keyframes pulseLED {
@@ -154,6 +186,11 @@ header {
   transform: scale(1.1);
 }
 
+.balloon.popped {
+  display: none !important;
+}
+
+
 @keyframes floatZigzag {
   0% { transform: translateY(0) translateX(0); }
   25% { transform: translateY(-10px) translateX(-5px); }
@@ -190,7 +227,7 @@ header {
   color: #00ffcc;
 }
 
-/* Game Result Section */
+/* Game Canvas Area */
 .game-area {
   padding: 20px;
   background: #111;
@@ -208,29 +245,69 @@ header {
   margin-top: 10px;
 }
 
-/* Video & Premium Section */
-#premiumContent video {
+/* Responsive Image */
+.responsive-img {
   width: 100%;
-  max-width: 600px;
-  margin: 20px auto;
-  display: block;
+  max-width: 700px;
+  height: auto;
+  border: 2px solid #00ffcc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ffcc;
 }
 
-.thanks-msg {
+/* Share Buttons */
+.share-buttons {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 16px;
   color: #00ffcc;
+}
+
+.share-buttons a {
+  color: #00ffcc;
+  margin: 0 8px;
+  text-decoration: none;
+}
+
+.share-buttons a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons and Inputs */
+input, button {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #00ffcc;
+  color: #000;
+  cursor: pointer;
   font-weight: bold;
+  box-shadow: 0 0 10px #00ffcc;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Admin Code Display */
-#adminCodeBox {
-  font-size: 18px;
+button:hover,
+button:focus {
+  background-color: #00ffaa;
+  transform: scale(1.05);
+  outline: none;
+}
+
+select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #00ffcc;
+  border-radius: 5px;
+  background: #111;
   color: #00ffcc;
-  margin-top: 10px;
+  max-width: 300px;
+  width: 80%;
 }
 
-/* Inputs */
+/* Input Styling */
 input[type="text"], input[type="password"] {
   width: 80%;
   max-width: 300px;
@@ -256,19 +333,21 @@ input:focus {
   color: #00ffcc;
 }
 
-.animated-name {
-  font-weight: bold;
-  padding-bottom: 10px;
-  color: #33fff3;
+/* Real-time Visitor Counter */
+.counter-img {
+  box-shadow: 0 0 10px #00ffcc;
+  border-radius: 5px;
+}
+
+/* Thanks Message */
+.thanks-msg {
+  margin-top: 20px;
   font-size: 18px;
+  color: #00ffcc;
+  font-weight: bold;
 }
 
-.ai-wave {
-  width: 100%;
-  height: 80px;
-}
-
-/* Audio Button - Fixed to Bottom Right */
+/* Audio Toggle Button */
 .audio-controls {
   position: fixed;
   bottom: 20px;
@@ -285,7 +364,7 @@ input:focus {
   transform: scale(1.05);
 }
 
-/* Optional Leader Cards (if used) */
+/* Optional Leader Cards */
 .leaders {
   display: flex;
   flex-wrap: wrap;
@@ -311,4 +390,25 @@ input:focus {
 .leader-card p {
   font-size: 14px;
   color: #ccc;
+}
+
+/* 👨‍💻 Innovator Section */
+.innovative-photo {
+  padding: 30px;
+  background-color: #111;
+  border-top: 1px solid #222;
+}
+
+.innovative-photo h2 {
+  font-size: 24px;
+  color: #00ffcc;
+  margin-bottom: 15px;
+}
+
+.innovative-photo p {
+  font-size: 16px;
+  color: #33fff3;
+  max-width: 700px;
+  margin: 15px auto 0;
+  line-height: 1.6;
 }

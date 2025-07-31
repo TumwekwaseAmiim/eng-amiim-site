@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Eng. Amiim | Tech & Football Game Lab</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0H0REH6HW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -12,38 +14,37 @@
     gtag('js', new Date());
     gtag('config', 'G-K0H0REH6HW');
   </script>
-  <link rel="preload" href="pop.mp3" as="audio">
-  <link rel="preload" href="goal.mp3" as="audio">
-  <link rel="preload" href="kick.mp3" as="audio">
-  <link rel="preload" href="game completion.mp3" as="audio">
-  <link rel="preload" href="goal-celebration.mp3" as="audio">
-</head>
-<body>
 
+  <!-- Preload Audios -->
+  <link rel="preload" href="pop.mp3" as="audio">
+  <link rel="preload" href="kick.mp3" as="audio">
+  <link rel="preload" href="game_completion.mp3" as="audio">
+  <link rel="preload" href="goal_celebrations.mp3" as="audio">
+  <link rel="preload" href="bg-music.mp3" as="audio">
+</head>
+
+<body>
 <header>
   <div class="scanner"></div>
   <h1 class="title">🚀 Eng. Amiim Tech Game Zone</h1>
   <p class="tech-slogan">Where Technology Takes Root in Kibale East</p>
 </header>
 
-<!-- 🎖️ Hon. Frank Section -->
+<!-- Frank Section -->
 <section class="frank-section">
   <h2>🎖️ Hon. Frank Tumwebaze</h2>
-  <img src="frank.jpg" id="frank-photo" alt="Frank" class="click-photo" />
-  <audio id="frank-audio" src="frank-song.mp3"></audio>
-  <audio id="goal-audio" src="goal-celebration.mp3"></audio>
+  <img src="frank-photo.jpg" id="frank-photo" alt="Frank" class="click-photo fade-in-img frank-pulse" />
+  <p class="frank-caption">🎵 Tap the photo to unlock music & celebration</p>
+  <audio id="frank-audio" src="frank_song.mp3" preload="auto"></audio>
+  <audio id="goal-audio" src="goal_celebrations.mp3" preload="auto"></audio>
+  <audio id="bg-music" src="bg-music.mp3" preload="auto" loop></audio>
+  <h3 class="frank-quote">🇺🇬 Patriot | Visionary | Leader | Champion of Development, Unity, and Youth Empowerment</h3>
 </section>
 
-<!-- 🌟 Innovator Section -->
-<section class="innovative-photo">
-  <h2>🌟 Innovator of the Site</h2>
-  <img src="amiim.jpg" alt="Eng. Amiim Tumwekwase" class="amiim-photo" />
-</section>
-
-<!-- 🎈 Balloon Game -->
+<!-- Balloon Game -->
 <section class="section">
   <h2>🎈 Balloon Popping Game</h2>
-  <div class="balloon-instruction">🎯 <strong>Tip:</strong> Tap on each balloon to earn scores!</div>
+  <p class="balloon-instruction">🎯 Tap balloons to score points!</p>
   <div class="balloon-row">
     <img src="balloon1.png" class="balloon" onclick="explodeBalloon(this)">
     <img src="balloon2.png" class="balloon" onclick="explodeBalloon(this)">
@@ -56,14 +57,25 @@
   <div id="burstLetters" class="letters"></div>
 </section>
 
-<!-- ⚽ Game Development Preview -->
+<!-- Football Game Preview -->
 <section class="section">
   <h2>⚽ Building the Future: Real Football Visual Game</h2>
-  <img src="pitch-with-players.jpg" alt="Football Game Preview" style="width:100%;max-width:700px;border:2px solid #00ffcc;border-radius:10px;">
+  <img src="pitch-with-players.jpg" alt="Football Game Preview" class="responsive-img">
   <p>This preview represents our shift to fully animated football gameplay — from canvas logic to player sprites and goals. Stay tuned!</p>
 </section>
 
-<!-- 🧪 LED Showcase -->
+<!-- Innovator Photo + Description -->
+<section class="innovative-photo">
+  <h2>🌟 Innovator of the Site</h2>
+  <img src="amiim-photo.jpg" alt="Eng. Amiim Tumwekwase" class="amiim-photo fade-in-img" />
+  <p>
+    Eng. Amiim Tumwekwase is a Software Engineer and youth leader from Kibale East, Uganda.<br>
+    He is passionate about empowering communities through digital innovation, education, and agriculture.
+    This platform represents his dream of blending technology with local talent and global standards.
+  </p>
+</section>
+
+<!-- LED Section -->
 <section class="led-showcase">
   <div class="led-item">Pulse Grid</div>
   <div class="led-item">Amiim Beam</div>
@@ -71,54 +83,47 @@
   <div class="led-item">Lightwave Circuit</div>
 </section>
 
-<!-- 🎾 Arsenal vs Manchester Game -->
+<!-- Arsenal vs Man Utd -->
 <section class="section">
   <h2>⚽ Arsenal vs Manchester United</h2>
-  <p>This is not a real European match – just a fun game to explore technology. Suggestions for future improvement are welcome!</p>
+  <p>This is a demo — not a real match. Enjoy tech and fun!</p>
   <select id="teamSelect">
     <option value="Arsenal">Arsenal</option>
     <option value="Manchester United">Manchester United</option>
   </select><br><br>
   <button onclick="startGame()">🏑 Start Match</button>
   <div id="gameCanvas" class="game-area"></div>
-  <button onclick="shareSite()">📤 Share This Game</button>
-  <p class="thanks-msg" style="display:none;">🙏 Thanks for supporting Eng. Amiim and youth innovation!</p>
-</section>
 
-<!-- 🛠️ Game Dev Teaser -->
-<section class="section">
-  <h2>🎮 Full Game Coming Soon</h2>
-  <p>We are replacing the premium zone with a full-blown football visual game that includes player movement, ball control, scoring, and real effects.</p>
-  <p>All content is now free and part of our youth innovation showcase.</p>
-</section>
+  <!-- Sharing Buttons -->
+<div class="share-buttons">
+  <p>📤 Share This Site:</p>
+  <a href="https://wa.me/?text=https://tumwekwaseamiim.github.io/" target="_blank">WhatsApp</a> |
+  <a href="https://twitter.com/intent/tweet?text=Check+out+Eng.+Amiim's+Tech+Site!&url=https://tumwekwaseamiim.github.io/" target="_blank">Twitter</a> |
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://tumwekwaseamiim.github.io/" target="_blank">Facebook</a>
+</div>
+<p class="thanks-msg" style="display:none;">🙏 Thanks for supporting Eng. Amiim and youth innovation!</p>
 
-<!-- 🧠 Footer -->
+
+<!-- Footer -->
 <footer class="footer-text">
   <p>Site Created by Eng. Amiim | “Creativity in Motion”</p>
   <p><a href="innov.JPG" target="_blank" style="color:#00ffcc">📸 View Innov Photo</a></p>
   <p><a href="preview.png" target="_blank" style="color:#00ffcc">🌐 Preview Screenshot</a></p>
-
-  <!-- 👁️ Real-time Visitor Counter -->
-  <div style="margin-top: 20px;">
+  <div class="visitor-counter">
     <a href="https://www.freecounterstat.com" title="page counter">
       <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=2zuyjcak752ens7gqwjlu4f8nja4823b"
-           border="0"
-           title="page counter"
-           alt="page counter"
-           style="box-shadow: 0 0 10px #00ffcc; border-radius: 5px;" />
+           alt="page counter" class="counter-img" />
     </a>
-    <p style="color:#00ffcc; font-size: 14px;">👁️ Real-time Visitor Count</p>
+    <p>👁️ Real-time Visitor Count</p>
   </div>
 </footer>
 
-
-<!-- 🎵 Background Music Toggle -->
+<!-- Music Toggle -->
 <div class="audio-controls">
-  <button onclick="toggleAudio()">🎵 Toggle Music</button>
+  <button onclick="toggleAudio()" id="muteButton">🔊 Mute</button>
 </div>
 
-<!-- 📜 Link to JavaScript -->
+<!-- Scripts -->
 <script src="script.js"></script>
-
 </body>
 </html>
