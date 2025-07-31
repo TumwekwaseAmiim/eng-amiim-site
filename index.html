@@ -6,6 +6,9 @@
   <title>Eng. Amiim | Tech & Football Game Lab</title>
   <link rel="stylesheet" href="style.css" />
 
+  <!-- Google Fonts: Orbitron (tech headings), Roboto (clean body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0H0REH6HW"></script>
   <script>
@@ -15,13 +18,14 @@
     gtag('config', 'G-K0H0REH6HW');
   </script>
 
-  <!-- Preload Audios -->
+  <!-- Preload Audio Files -->
   <link rel="preload" href="pop.mp3" as="audio">
   <link rel="preload" href="kick.mp3" as="audio">
   <link rel="preload" href="game_completion.mp3" as="audio">
   <link rel="preload" href="goal_celebrations.mp3" as="audio">
   <link rel="preload" href="bg-music.mp3" as="audio">
 </head>
+
 
 <body>
 <header>
@@ -34,7 +38,10 @@
 <section class="frank-section">
   <h2>🎖️ Hon. Frank Tumwebaze</h2>
   <img src="frank-photo.jpg" id="frank-photo" alt="Frank" class="click-photo fade-in-img frank-pulse" />
-  <p class="frank-caption">🎵 Tap the photo to unlock music & celebration</p>
+ <p class="frank-caption" style="font-weight:bold; color:#00ffcc; font-size:1.1rem;">
+  🎵 Tap Hon. Frank Tumwebaze’s Photo to Celebrate Leadership & Patriotism!
+</p>
+
   <audio id="frank-audio" src="frank_song.mp3" preload="auto"></audio>
   <audio id="goal-audio" src="goal_celebrations.mp3" preload="auto"></audio>
   <audio id="bg-music" src="bg-music.mp3" preload="auto" loop></audio>

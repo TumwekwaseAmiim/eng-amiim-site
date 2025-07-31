@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
   margin: 0;
-  font-family: 'Orbitron', Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   background: #000;
   color: #fff;
   text-align: center;
@@ -44,7 +44,28 @@ html {
   }
 }
 
-/* Header and Branding */
+/* Font Settings */
+.title,
+.letters,
+.led-item,
+.scanner,
+header h1,
+header h2,
+header h3 {
+  font-family: 'Orbitron', Arial, sans-serif;
+}
+
+p,
+.thanks-msg,
+button,
+input,
+select,
+footer,
+.innovative-photo p {
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Header */
 header {
   padding: 40px 20px;
   background: linear-gradient(to right, #001f1f, #000);
@@ -75,7 +96,7 @@ header {
   100% { transform: translateX(100%); }
 }
 
-/* Frank & Amiim Photos */
+/* Photos */
 .click-photo,
 .amiim-photo {
   width: 200px;
@@ -93,7 +114,6 @@ header {
   transform: scale(1.05);
 }
 
-/* Glowing Frank Pulse */
 .frank-pulse {
   animation: glowPrompt 1.5s infinite alternate;
   border: 3px solid #00ffcc;
@@ -108,7 +128,7 @@ header {
   100% { box-shadow: 0 0 25px #00ffaa; transform: scale(1.05); }
 }
 
-/* Fade-in Animation */
+/* Fade-in */
 .fade-in-img {
   animation: fadeIn 1s ease-in-out;
 }
@@ -118,7 +138,7 @@ header {
   to { opacity: 1; transform: scale(1); }
 }
 
-/* Section Styling */
+/* Sections */
 .section {
   padding: 30px;
   border-bottom: 1px solid #222;
@@ -155,7 +175,7 @@ header {
   background: rgba(0, 255, 204, 0.2);
 }
 
-/* Balloon Game */
+/* Balloons */
 .balloon-row {
   display: flex;
   justify-content: center;
@@ -190,7 +210,6 @@ header {
   display: none !important;
 }
 
-
 @keyframes floatZigzag {
   0% { transform: translateY(0) translateX(0); }
   25% { transform: translateY(-10px) translateX(-5px); }
@@ -199,7 +218,6 @@ header {
   100% { transform: translateY(0) translateX(0); }
 }
 
-/* Explosion Effect */
 .explosion {
   font-size: 36px;
   font-weight: bold;
@@ -227,7 +245,7 @@ header {
   color: #00ffcc;
 }
 
-/* Game Canvas Area */
+/* Game Canvas */
 .game-area {
   padding: 20px;
   background: #111;
@@ -245,7 +263,7 @@ header {
   margin-top: 10px;
 }
 
-/* Responsive Image */
+/* Shared Media */
 .responsive-img {
   width: 100%;
   max-width: 700px;
@@ -255,7 +273,6 @@ header {
   box-shadow: 0 0 10px #00ffcc;
 }
 
-/* Share Buttons */
 .share-buttons {
   margin-top: 20px;
   font-size: 16px;
@@ -272,7 +289,7 @@ header {
   text-decoration: underline;
 }
 
-/* Buttons and Inputs */
+/* Inputs & Buttons */
 input, button {
   padding: 10px;
   margin: 10px;
@@ -307,7 +324,6 @@ select {
   width: 80%;
 }
 
-/* Input Styling */
 input[type="text"], input[type="password"] {
   width: 80%;
   max-width: 300px;
@@ -333,7 +349,6 @@ input:focus {
   color: #00ffcc;
 }
 
-/* Real-time Visitor Counter */
 .counter-img {
   box-shadow: 0 0 10px #00ffcc;
   border-radius: 5px;
@@ -347,7 +362,7 @@ input:focus {
   font-weight: bold;
 }
 
-/* Audio Toggle Button */
+/* Audio Button */
 .audio-controls {
   position: fixed;
   bottom: 20px;
@@ -364,7 +379,7 @@ input:focus {
   transform: scale(1.05);
 }
 
-/* Optional Leader Cards */
+/* Leader Cards */
 .leaders {
   display: flex;
   flex-wrap: wrap;
@@ -392,7 +407,7 @@ input:focus {
   color: #ccc;
 }
 
-/* 👨‍💻 Innovator Section */
+/* Innovator Section */
 .innovative-photo {
   padding: 30px;
   background-color: #111;

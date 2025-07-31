@@ -1,15 +1,15 @@
 // ⚡ Background Music (Autoplay 2 Songs with Mute/Unmute)
-const songs = ["bring me.mp3", "hall of fame.mp3"];
+const songs = ["bring_me.mp3", "hall_of_fame.mp3"];
 let currentSongIndex = 0;
 let bgAudio = new Audio(songs[currentSongIndex]);
 let isMuted = false;
 
-// Rotate music
-bgAudio.addEventListener("ended", () => {
+function rotateSong() {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
   bgAudio.src = songs[currentSongIndex];
   if (!isMuted) bgAudio.play().catch(() => {});
-});
+}
+bgAudio.addEventListener("ended", rotateSong);
 
 // Autoplay after interaction
 window.addEventListener("click", () => {
@@ -37,16 +37,34 @@ const goalAudio = document.getElementById("goal-audio");
 
 if (frankPhoto && frankAudio && goalAudio) {
   frankPhoto.classList.add("frank-pulse");
-  frankPhoto.title = "Click for Sound Surprise 🎵⚽";
+  frankPhoto.title = "Tap Hon. Frank Tumwebaze to celebrate 🇺🇬";
 
   frankPhoto.addEventListener("click", () => {
     bgAudio.pause();
+    bgAudio.removeEventListener("ended", rotateSong);
+
     frankAudio.currentTime = 0;
     goalAudio.currentTime = 0;
     frankAudio.play().catch(() => {});
     goalAudio.play().catch(() => {});
+
+    if (!document.querySelector(".frank-thankyou")) {
+      const thankYou = document.createElement("div");
+      thankYou.className = "frank-thankyou";
+      thankYou.innerHTML = `
+        <p style="color:#00ffcc; font-weight:bold; font-size:1.1rem; margin-top:10px;">
+          🙏 Thanks for loving and supporting your leader.<br>
+          Hon. Frank Tumwebaze represents unity, vision, and action for Kibale East!
+        </p>
+      `;
+      document.querySelector(".frank-section")?.appendChild(thankYou);
+    }
+
     frankAudio.onended = () => {
-      if (!isMuted) bgAudio.play().catch(() => {});
+      if (!isMuted) {
+        bgAudio.play().catch(() => {});
+        bgAudio.addEventListener("ended", rotateSong);
+      }
     };
   });
 }
@@ -55,9 +73,17 @@ if (frankPhoto && frankAudio && goalAudio) {
 let score = parseInt(localStorage.getItem("score")) || 0;
 let popped = 0;
 const totalBalloons = 6;
+let gameCompleted = localStorage.getItem("balloonGameCompleted") === "true";
+
+if (gameCompleted) {
+  document.querySelector(".balloon-row").innerHTML = `
+    <p style="color: #00ffcc; font-weight: bold;">🎯 You already completed this game. Well done!</p>
+  `;
+  document.getElementById("scoreDisplay").innerText = `🎯 Score: ${localStorage.getItem("score") || 6}`;
+}
 
 function explodeBalloon(el) {
-  if (!el || el.classList.contains("popped")) return;
+  if (!el || el.classList.contains("popped") || gameCompleted) return;
 
   el.classList.add("popped");
   const popSound = new Audio("pop.mp3");
@@ -76,6 +102,7 @@ function explodeBalloon(el) {
   localStorage.setItem("score", score);
 
   if (popped === totalBalloons) {
+    localStorage.setItem("balloonGameCompleted", "true");
     const balloonRow = document.querySelector(".balloon-row");
 
     const congrats = document.createElement("div");
@@ -83,14 +110,14 @@ function explodeBalloon(el) {
     congrats.innerText = "🎉 Congratulations! You popped all balloons!";
     balloonRow.appendChild(congrats);
 
-    const cheer = new Audio("goal celebrations.mp3");
+    const cheer = new Audio("goal_celebrations.mp3");
     cheer.play().catch(() => {});
 
     const quiz = document.createElement("div");
     quiz.innerHTML = `
       <h3>👑 Be a Winner!</h3>
       <p>Select our development hero to win:</p>
-      <img src="frank photo.jpg" alt="Hon. Frank Tumwebaze" onclick="winnerSelected()" style="width:300px;border:3px solid #00ffcc;border-radius:10px;cursor:pointer;box-shadow:0 0 15px #00ffaa;">
+      <img src="frank_photo.jpg" alt="Hon. Frank Tumwebaze" onclick="winnerSelected()" style="width:300px;border:3px solid #00ffcc;border-radius:10px;cursor:pointer;box-shadow:0 0 15px #00ffaa;">
     `;
     balloonRow.appendChild(quiz);
   }
@@ -102,7 +129,7 @@ function winnerSelected() {
   msg.innerHTML = "✅ Well done! You selected our true development hero. Hon. Frank is the pride of Kibale East! <br>#FrankMyMP #FrankMyChoice";
   document.querySelector(".balloon-row").appendChild(msg);
 
-  const frankSong = new Audio("frank song.mp3");
+  const frankSong = new Audio("frank_song.mp3");
   frankSong.play().catch(() => {});
 }
 
